@@ -26,11 +26,9 @@ public class EmailController {
     }
 
 
-
     @PostMapping("/email")
     public String saveEmail(@ModelAttribute Email email, Model model) {
         model.addAttribute("email",email);
-
         return "info";
     }
 
