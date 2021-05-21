@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style th:fragment="style">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .search-box {
+            background: white;
+            height: 40px;
+
+        }
+
+        .search-box:hover .search-txt {
+            width: 240px;
+            padding: 0 6px;
+        }
+
+        .search-box:hover .search-btn {
+            background: white;
+        }
+
+        .search-btn {
+            float: right;
+            color: cyan;
+            width: 40px;
+            height: 40px;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .search-btn > a > i {
+            text-decoration: none;
+        }
+
+        .search-txt {
+            border: none;
+            background: none;
+            outline: none;
+            width: 0;
+            float: left;
+            color: black;
+            padding: 0;
+            font-size: 16px;
+            line-height: 40px;
+            transition: 0.4s;
+            padding: 0;
+        }
+        #grad1 {
+            height: 100px;
+            background-color: deepskyblue;
+            background-image: linear-gradient(deepskyblue, white);
+        }
+    </style>
+</head>
+<body>
+
+</body>
+</html>

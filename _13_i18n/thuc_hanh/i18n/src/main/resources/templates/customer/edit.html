@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{layout :: head}"></head>
+<body>
+<div th:insert="~{layout :: header}"></div>
+
+<div class="container">
+    <h1 style="color: teal" class="text-center">Edit Customer Information</h1>
+    <form th:action="@{/customer/edit}" method="post" th:object="${customer}">
+        <table class="table table-hover">
+            <thead></thead>
+            <tbody>
+            <tr hidden>
+                <th>ID</th>
+                <td>
+                    <input type="text" th:field="*{id}">
+                </td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>
+                    <input type="text" th:field="*{name}" required>
+                </td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>
+                    <input type="text" th:field="*{email}" required>
+                </td>
+            </tr>
+            <tr>
+                <th>Province</th>
+                <td>
+                    <select th:field="*{province}">
+                        <option th:each="province : ${listProvince}"
+                                th:value="${province.id}"
+                                th:text="${province.name}" >
+                        </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a th:href="@{/customer/}"><button class="btn btn-info">Back</button></a>
+                </td>
+                <td>
+                    <button type="submit" class="btn btn-warning">Update</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+
+<div th:replace="/layout :: script"></div>
+<div th:insert="~{layout :: footer}"></div>
+</body>
+</html>

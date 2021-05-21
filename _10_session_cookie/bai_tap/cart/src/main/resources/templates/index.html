@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="layout::head"></head>
+<body>
+<div id="grad1"></div>
+<nav th:replace="~{layout::nav}"></nav>
+
+<div th:fragment="body-layout" class="row " style="margin-right: 15px; height: 700px">
+    <div class="col-2 bg-dark">
+        <hr style="background-color: white">
+        <a href="#"><p style="text-align: center;color: white">Giới thiệu</p></a>
+        <hr style="background-color: white">
+        <p style="text-align: center;color: white">Item 2</p>
+        <hr style="background-color: white">
+        <p style="text-align: center;color: white">Item 3</p>
+    </div>
+    <div class="col-10 bg-light">
+        <h2 th:text="${mess}" style="color:red;"></h2>
+        <div align="center">
+            <div th:each="row,rowStat : ${list}">
+                <div class="card" style="width: 18rem;float: left">
+                    <img class="card-img-top" th:src="${row.image}" height="381" alt="day la hinh anh ne ">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${row.name}"></h5>
+<!--                        <p class="card-text" th:text="${row.description}"></p>-->
+                        <p class="card-text" th:text="${row.price}"></p>
+                        <a th:href="@{/product/view/__${row.getId()}__ }" class="btn btn-primary">Oder</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<div th:replace="layout::xoaModal('/product/delete')"></div>-->
+<div th:replace="layout::footer"></div>
+</body>
+</html>

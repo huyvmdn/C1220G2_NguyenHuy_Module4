@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="layout::head"></head>
+<body>
+<nav th:replace="~{layout::nav}"></nav>
+
+<h2 th:text="${mess}" style="color: red" ></h2>
+<div align="center">
+    <table id="table" class="table table-striped table-bordered bg-light ">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Author</th>
+            <th>stock</th>
+            <th>view</th>
+<!--            <th>Edit</th>-->
+<!--            <th>Delete</th>-->
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="row,rowStat : ${list}">
+            <td th:text="${row.id}"></td>
+            <td th:text="${row.name}"></td>
+            <td th:text="${row.author}"></td>
+            <td th:text="${row.stock}"></td>
+            <td><a class="btn btn-success" th:href="@{/book/view/__${row.getId()}__ }">View </a></td>
+<!--            <td><a class="btn btn-warning" th:href="@{/book/edit/__${row.getId()}__ }">Edit</a></td>-->
+<!--            <td><a href="#" data-toggle="modal" data-target="#xoa" class="btn btn-danger"-->
+<!--                   th:onclick="'setIdDeleteToForm(\'' + ${row.getId()} + '\');'"> Xóa </a></td>-->
+        </tr>
+        </tbody>
+    </table>
+
+<!--    <button stype="button" class="btn btn-outline-success my-2 my-sm-0" th:if="${list.hasPrevious()}"><a-->
+<!--            th:href="@{'/search'(name=${name},price=${price},date1=${date1},date2=${date2},page=${list.number - 1})}"-->
+<!--    >Previous</a></button>-->
+<!--    <span th:text="${list.number + 1}"></span>/<span th:text="${list.totalPages}"></span>-->
+<!--    <button type="button" class="btn btn-outline-success my-2 my-sm-0" th:if="${list.hasNext()}"><a-->
+<!--            th:href="@{'/search'(name=${name},price=${price},date1=${date1},date2=${date2},page=${list.number + 1})}"-->
+<!--    >Next</a></button>-->
+
+</div>
+<p> number of visitors  <span th:text="${count}"></span></p>
+
+<div th:replace="layout::xoaModal('/book/delete')"></div>
+<div th:replace="layout::footer"></div>
+</body>
+</html>

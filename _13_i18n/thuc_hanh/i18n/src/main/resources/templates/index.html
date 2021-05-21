@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{layout :: head}"></head>
+<body>
+<div th:insert="~{layout :: header}"></div>
+
+<div class="container">
+    <h1 style="color: teal" class="text-center" th:text="#{title}"></h1>
+
+    <div style="display: inline">
+        <button class="btn btn-success" data-target="#createModal" data-toggle="modal" style="margin-bottom: 15px">
+            <i class="far fa-plus-square"></i>
+        </button>
+        <form th:action="@{/customer/search}" class="input-group col-4 float-right">
+            <input type="text" name="search" id="search"
+                   class="form-control" placeholder="Search ..." th:value="${search}">
+            <div class="input-group-append" style="padding-left: 5px">
+                <button type="submit" title="Search" class="btn btn-outline-success">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+    <div th:if="${message}">
+        <div class="alert alert-success alert-dismissible fade show font-weight-bold">
+            <button type="button" class="close float-right" data-dismiss="alert">&times;</button>
+            <span th:text="${message}"></span>
+        </div>
+    </div>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th th:text="#{no}"></th>
+            <th th:text="#{id}"></th>
+            <th th:text="#{name}"></th>
+            <th th:text="#{email}"></th>
+            <th th:text="#{province}"></th>
+            <th th:text="#{options}"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="customer, iterStat : ${listCustomer}">
+            <tr>
+                <td th:text="${iterStat.count}"></td>
+                <td th:text="${customer.id}"></td>
+                <td th:text="${customer.name}"></td>
+                <td th:text="${customer.email}"></td>
+                <td>
+                    <a style="text-decoration: none"
+                       th:href="@{/province(provinceName=${customer.province.name})}"
+                       th:text="${customer.province.name}">
+                    </a>
+                </td>
+                <td>
+                    <a style="text-decoration: none" th:href="@{/customer/view(id=${customer.id})}">
+                        <button class="btn btn-info">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </a>
+                    <a style="text-decoration: none" th:href="@{/customer/show_edit(id=${customer.id})}">
+                        <button class="btn btn-warning">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </a>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal"
+                            th:onclick="|customerSetId('${customer.id}')|">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+    <div>
+        <a th:href="@{'/customer'(page=${listCustomer.number - 1})}" th:if="${listCustomer.hasPrevious()}">
+            <button class="btn btn-info">
+                <i class="fas fa-fast-backward"></i>
+            </button>
+        </a>
+        <button class="btn btn-light">
+            <span th:text="${listCustomer.number + 1}"></span>/<span th:text="${listCustomer.totalPages}"></span>
+        </button>
+        <a th:href="@{'/customer'(page=${listCustomer.number + 1})}" th:if="${listCustomer.hasNext()}">
+            <button class="btn btn-info">
+                <i class="fas fa-fast-forward"></i>
+            </button>
+        </a>
+    </div>
+
+</div>
+
+<div class="modal fade" id="createModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Add New Customer</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form th:action="@{/customer/create}" method="post" th:object="${customer}">
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table class="table table-hover">
+                        <thead></thead>
+                        <tbody>
+                        <tr>
+                            <th>Name</th>
+                            <td>
+                                <input type="text" class="form-control" th:field="*{name}" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>
+                                <input type="text" class="form-control" th:field="*{email}" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Province</th>
+                            <td>
+                                <select th:field="*{province}">
+                                    <option th:each="province : ${listProvince}" th:value="${province.id}"
+                                            th:text="${province.name}">
+                                    </option>
+                                </select>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                    <button class="btn btn-success" type="submit">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div th:replace="/layout :: deleteModal"></div>
+<div th:replace="/layout :: script"></div>
+<div th:insert="~{layout :: footer}"></div>
+</body>
+</html>

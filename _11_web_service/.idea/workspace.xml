@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="406d3cb8-4639-4578-8640-3c5d1a6369fb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../_05_ CSDL&amp;ORM/thuc_hanh/customer-management" beforeDir="false" afterPath="$PROJECT_DIR$/../_05_ CSDL&amp;ORM/thuc_hanh/customer-management" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_09_AOP/thuc_hanh/customer-management" beforeDir="false" afterPath="$PROJECT_DIR$/../_09_AOP/thuc_hanh/customer-management" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1sWO5jbWyKl2Uye27WSbxPN6t8L" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="406d3cb8-4639-4578-8640-3c5d1a6369fb" name="Default Changelist" comment="" />
+      <created>1620984697169</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1620984697169</updated>
+      <workItem from="1620984707607" duration="145000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="739" y="261" key="FileChooserDialogImpl" timestamp="1620984842855">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="739" y="261" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1620984842855" />
+    <state x="342" y="95" key="new project wizard" timestamp="1620984851286">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="342" y="95" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1620984851286" />
+  </component>
+</project>

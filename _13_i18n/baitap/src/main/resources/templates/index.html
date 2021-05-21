@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="layout::head"></head>
+<body id="list">
+<div id="grad1"></div>
+<nav th:replace="~{layout::nav}"></nav>
+
+<div th:fragment="body-layout" class="row " style="margin-right: 15px; height: 700px">
+    <div class="col-2 bg-light">
+        <hr style="background-color: white">
+        <a href="#"><p style="text-align: center">Giới thiệu</p></a>
+        <hr>
+        <p style="text-align: center;">Item 2</p>
+        <hr style="background-color: white">
+        <p style="text-align: center;">Item 3</p>
+    </div>
+    <div class="col-10 bg-light">
+        <div class="col-12">
+
+
+            <h2 th:text="${mess}" style="color:red;"></h2>
+
+            <div align="center" id="searchList">
+                <div th:each="row,rowStat : ${list}">
+                    <div class="card" style="width: 18rem;float: left">
+                        <img class="card-img-top" th:src="${row.image}" height="381" alt="day la hinh anh ne ">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${row.title}"></h5>
+                            <!--                        <p class="card-text" th:text="${row.description}"></p>-->
+                            <p class="card-text" th:text="${row.dateBlog}"></p>
+                            <a th:href="@{/blog/view/__${row.getId()}__ }" class="btn btn-primary">View</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <button type="button" id="btnLoadMore" class="btn btn-info"> Load More</button>
+        </div>
+
+    </div>
+</div>
+
+
+<div th:replace="layout::xoaModal('/product/delete')"></div>
+<div th:replace="layout::footer"></div>
+<script>
+    $(document).ready(function () {
+        let more = 1
+        $('#btnLoadMore').click(function () {
+
+            $.ajax({
+                type: "GET",
+                url: `/load/${more}`,
+                dataType: "HTML",
+                success: function (data) {
+                    $("#searchList").append(data);
+                }
+            });
+            more++;
+        })
+    })
+</script>
+
+</body>
+</html>

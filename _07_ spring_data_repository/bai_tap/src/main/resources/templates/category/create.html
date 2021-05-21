@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  lang="en">
+<head th:replace="layout::head"></head>
+<body>
+<nav th:replace="~{index::nav}"></nav>
+<div id="form">
+    <form action="#" th:action="@{/saveCategory}" th:object="${category}"
+          method="POST" novalidate="novalidate">
+        <div>
+            <label>category</label>
+            <div class="form-group green-border-focus">
+                <input type="text"   class="text-input" th:field="*{name}"/>
+            </div>
+        </div>
+        <input type="submit" value="Save Category"/>
+    </form>
+</div>
+
+<div th:replace="layout::footer"></div>
+
+<script>
+
+    $(document).ready( function() {
+        $('#datePicker').val(new Date().toDateInputValue());
+    });​
+
+
+</script>
+</body>
+</html>

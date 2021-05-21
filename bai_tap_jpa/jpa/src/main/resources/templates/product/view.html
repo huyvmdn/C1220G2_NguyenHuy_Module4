@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="layout::head"></head>
+<body>
+<nav th:replace="~{layout::nav}"></nav>
+<br><br>
+<div class="bg-dark" style="width: 100%"  th:object="${object}">
+    <table>
+        <tr>
+            <th> ID</th>
+            <td><input type="text" class="text-input" readonly th:field="${object.id}"/></td>
+        </tr>
+        <tr>
+            <th> name</th>
+            <td><input type="text" class="text-input" readonly th:field="${object.name}"/></td>
+        </tr>
+        <tr>
+            <th> price</th>
+            <td><input type="text" class="text-input" readonly th:field="${object.price}"/></td>
+        </tr>
+        <tr>
+            <th> stock</th>
+            <td><input type="text" class="text-input " readonly th:field="${object.stock}"/></td>
+        </tr>
+        <tr>
+            <th> content</th>
+            <td><input type="text" class="text-input" readonly th:field="${object.detail.content}"/></td>
+        </tr>
+        <tr>
+            <th> image</th>
+            <td><img th:src="${img}" alt=""></td>
+        </tr>
+
+    </table>
+</div>
+<div th:replace="layout::footer"></div>
+</body>
+</html>

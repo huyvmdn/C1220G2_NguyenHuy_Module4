@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{layout :: head}"></head>
+<body>
+<div th:insert="~{layout :: header}"></div>
+
+<div class="container">
+    <h1 style="color: teal" class="text-center">Customer Information</h1>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th th:text="${customer.id}"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th>Name</th>
+            <td th:text="${customer.name}"></td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td th:text="${customer.email}"></td>
+        </tr>
+        <tr>
+            <th>Province</th>
+            <td th:text="${customer.province.name}"></td>
+        </tr>
+        <tr>
+            <td>
+                <a th:href="@{/customer/}"><button class="btn btn-info" type="button">Back</button></a>
+            </td>
+            <td>
+                <a th:href="@{/customer/show_edit(id=${customer.id})}"><button type="button" class="btn btn-warning">Edit</button></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div th:replace="/layout :: script"></div>
+<div th:insert="~{layout :: footer}"></div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="layout::head"></head>
+<body>
+
+<a class="navbar-brand"  th:href="@{/index}">Flower </a>
+<h2 th:text="${mess}" style="color:red;"></h2>
+<form th:object="${object}"  th:action="@{/save}" method="post">
+
+<div class="row" >
+    <div class="col-6">
+        <input type="hidden" class="form-control"  name="id"  th:value="${object.id}">
+            <div class="card" style="width: 50rem;float: left;height: 900px ">
+                <img  th:src="${object.image}"  alt="day la hinh anh ne ">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${object.name}"></h5>
+                    <!--                        <p class="card-text" th:text="${row.description}"></p>-->
+
+                    <p class="card-text" th:text="${object.price}"></p>
+                    <input type="number" class="form-control" name="amount" th:field="*{amount}">
+                    <input type="submit" value="ADD in Cart">
+                </div>
+            </div>
+
+    </div>
+    <div class="col-6">
+        <h5 class="card-title" th:text="${object.name}"></h5>
+        <hr>
+        <p class="card-text" th:text="${object.description}"></p>
+    </div>
+</div>
+</form>
+
+<!--        <form class="container" th:object="${object}"  th:action="@{/save}" method="post" >-->
+<!--            <div class="form-group">-->
+<!--                <input type="hidden" class="form-control"  name="id"  th:value="${object.id}">-->
+<!--            </div>-->
+<!--            <h2 th:text="*{name}"></h2>-->
+<!--            <p  th:text="*{description}"></p>-->
+<!--            <div class="card" style="width:400px">-->
+<!--                <img class="card-img-top" th:src="${object.image}" alt="Card image" style="width:100%">-->
+<!--                <div class="card-body">-->
+<!--                    <h4 class="card-title">John Doe</h4>-->
+<!--                    <p class="card-text" th:text="*{description}"></p>-->
+<!--                    <p class="card-text" th:text="*{price}"></p>-->
+<!--                    <input type="number" class="form-control" name="amount" th:field="*{amount}">-->
+
+<!--                    <a href="#" class="btn btn-primary stretched-link">add Cart</a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </form>-->
+
+        <a class="navbar-brand"  th:href="@{/index}">BACK </a>
+<div th:replace="layout::footer"></div>
+</body>
+</html>

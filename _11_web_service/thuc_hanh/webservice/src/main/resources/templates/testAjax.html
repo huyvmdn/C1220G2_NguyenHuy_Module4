@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="layout::head"></head>
+<body>
+<nav th:replace="~{layout::nav}"></nav>
+
+
+<div th:replace="layout::footer"></div>
+
+<script>
+
+    $.ajax( {
+        url:'http://localhost:8080/api/customers',
+        type: 'POST',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            firstName: " ajax",
+            lastName: "none"
+        })
+    }).done(function (response) {
+        console.log(response);
+        // response.forEach(item =>{
+        //     console.log( item.firstName)
+        // })
+    });
+    $.ajax( {
+        url:'http://localhost:8080/api/customers',
+        type: 'GET',
+        dataType: 'json'
+    }).done(function (response) {
+        console.log(response);
+        // response.forEach(item =>{
+        //     console.log( item.firstName)
+        // })
+    });
+    </script>
+
+</body>
+</html>

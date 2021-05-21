@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="head_fragment">
+    <title th:text="PRODUCT"></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="/resources/vendor/bootstrap/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/resources/vendor/datatables/css/dataTables.bootstrap4.min.css" type="text/css">
+
+</head>
+<body>
+
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark w-100" style="left: 0px">
+    <a class="navbar-brand" href="#">FURAMA </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/index.jsp"> <span style="color: white">Home</span> </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">A <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">B <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">C <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">D <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0" action="/customers">
+            <button type="button" class="btn btn-outline-success my-2 my-sm-0" style="margin-right: 10px">
+                <a href="customers?action=customers">Loading database</a>
+            </button>
+            <button type="button" class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal"
+                    data-target="#exampleModal" data-whatever="@mdo" style="margin-right: 10px">
+                Create new Product
+            </button>
+
+            <input type="hidden" name="action" value="search">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"
+                   name="customer_name">
+            <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search">
+        </form>
+    </div>
+</nav>
+
+
+<div th:fragment="script_link">
+    <script src="/resources/vendor/jquery/jquery-3.6.0.min.js"></script>
+    <script src="/resources/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="/resources/vendor/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/resources/vendor/bootstrap413/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#Table').dataTable({
+                "dom": 'lrtip',
+                "lengthChange": false,
+                "pageLength": 5
+            });
+        });
+    </script>
+</div>
+</body>
+</html>

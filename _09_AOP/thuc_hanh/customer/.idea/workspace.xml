@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7d28aa25-7883-4eee-9758-cccacdca133f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../../_07_ spring_data_repository/bai_tap/src/main/java/com/blog/newblog/entity/security/AppRole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../_07_ spring_data_repository/bai_tap/src/main/java/com/blog/newblog/entity/security/AppUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../_07_ spring_data_repository/bai_tap/src/main/java/com/blog/newblog/entity/security/UserRole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../_07_ spring_data_repository/bai_tap/src/main/java/com/blog/newblog/ripository/security/AppRoleDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../_07_ spring_data_repository/bai_tap/src/main/java/com/blog/newblog/ripository/security/AppUserDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../_07_ spring_data_repository/bai_tap/src/main/java/com/blog/newblog/service/security/UserDetailsServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../_07_ spring_data_repository/bai_tap/src/main/java/com/blog/newblog/until/EncrytedPasswordUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../_07_ spring_data_repository/bai_tap/src/main/java/config/WebSecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../_07_ spring_data_repository/bai_tap/src/main/resources/templates/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../bai_tap/quan_ly_sach/src/main/java/com/baitap/quan_ly_sach/config/WebMvcConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../bai_tap/quan_ly_sach/src/main/java/com/baitap/quan_ly_sach/entity/Book.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../bai_tap/quan_ly_sach/src/main/java/com/baitap/quan_ly_sach/entity/RentalCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../bai_tap/quan_ly_sach/src/main/resources/templates/css.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../bai_tap/quan_ly_sach/src/main/resources/templates/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../bai_tap/quan_ly_sach/src/main/resources/templates/layout.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer_1/src/main/java/com/example/customer/config/AppConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer_1/src/main/java/com/example/customer/controller/CustomerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer_1/src/main/java/com/example/customer/formatter/ProvinceFormatter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer_1/src/main/java/com/example/customer/logger/Logger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer_1/src/main/java/com/example/customer/model/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer_1/src/main/java/com/example/customer/model/Province.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer_1/src/main/java/com/example/customer/repository/CustomerRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer_1/src/main/java/com/example/customer/repository/ProvinceRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer_1/src/main/java/com/example/customer/service/CustomerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer_1/src/main/java/com/example/customer/service/ProvinceService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer_1/src/main/java/com/example/customer/service/impl/CustomerServiceImplWithSpringData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer_1/src/main/java/com/example/customer/service/impl/ProvinceServiceImplWithSpringData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer_1/src/main/resources/templates/customers/info.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer_1/src/main/resources/templates/customers/inputs-not-acceptable.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer_1/src/main/resources/templates/customers/list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exception/src/main/java/com/config/AppConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exception/src/main/java/com/controller/CustomerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exception/src/main/java/com/formatter/ProvinceFormatter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exception/src/main/java/com/logger/Logger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exception/src/main/java/com/model/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exception/src/main/java/com/model/Province.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exception/src/main/java/com/repository/CustomerRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exception/src/main/java/com/repository/ProvinceRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exception/src/main/java/com/service/CustomerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exception/src/main/java/com/service/DuplicateEmailException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exception/src/main/java/com/service/ProvinceService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exception/src/main/java/com/service/impl/CustomerServiceImplWithSpringData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exception/src/main/java/com/service/impl/ProvinceServiceImplWithSpringData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../_05_ CSDL&amp;ORM/thuc_hanh/customer-management" beforeDir="false" afterPath="$PROJECT_DIR$/../../../_05_ CSDL&amp;ORM/thuc_hanh/customer-management" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../_07_ spring_data_repository/bai_tap/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../_07_ spring_data_repository/bai_tap/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../_08_validation/bai_tap/validation/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../../_08_validation/bai_tap/validation/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/thuchanh/customer/CustomerApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/thuchanh/customer/ServletInitializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/thuchanh/customer/config/WebConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/thuchanh/customer/entity/Customer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/thuchanh/customer/entity/Province.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/thuchanh/customer/formatter/ProvinceFormatter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/thuchanh/customer/repository/CustomerRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/thuchanh/customer/repository/ProvinceRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/thuchanh/customer/service/CustomerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/thuchanh/customer/service/CustomerServiceImplWithSpringData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/thuchanh/customer/service/ProvinceService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/thuchanh/customer/service/ProvinceServiceImplWithSpringData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/customers/info.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/customers/list.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/thuchanh/customer/CustomerApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bai_tap_jpa/jpa/src/main/resources/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bai_tap_jpa/jpa/src/main/resources/templates/layout.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="1sOKaDxdyqcHzKC3ydLgNw9aPwK" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../_07_ spring_data_repository/thuc_hanh/phan_trang" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RunManager">
+    <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="demo.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.demo.DemoApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7d28aa25-7883-4eee-9758-cccacdca133f" name="Default Changelist" comment="" />
+      <created>1620738256938</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1620738256938</updated>
+      <workItem from="1620738260924" duration="651000" />
+      <workItem from="1620817668099" duration="32000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1620738288931">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1620738288931" />
+  </component>
+</project>

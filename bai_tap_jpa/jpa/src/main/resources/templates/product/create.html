@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="layout::head"></head>
+<body>
+<nav th:replace="~{layout::nav}"></nav>
+
+<form align="center" th:action="@{/product/save}" th:object="${object}"
+      method="POST" novalidate="novalidate">
+    <table id="table" >
+        <tr>
+            <th> Name</th>
+            <td><input type="text" class="text-input" th:field="*{name}"/></td>
+        </tr>
+        <tr>
+            <th> price</th>
+            <td><input type="text" class="text-input" th:field="*{price}"/></td>
+        </tr>
+        <tr>
+            <th> stock</th>
+            <td><input type="text" class="text-input" th:field="*{stock}"/></td>
+        </tr>
+        <tr>
+            <th> image</th>
+            <td><input type="text" class="text-input" th:field="*{detail.image}"/></td>
+        </tr>
+        <tr>
+            <th> content</th>
+            <td><textarea  class="text-area" th:field="*{detail.content}"/></td>
+        </tr>
+  <tr>
+      <th></th>
+      <td>
+          <select th:field="*{category}">
+              <option th:each="c : ${categorys}" th:value="${c.id}" th:text="${c.name}"></option>
+          </select>
+      </td>
+  </tr>
+        <tr>
+            <th> </th>
+            <td>  <input type="submit" value="Create Product"/></td>
+        </tr>
+    </table>
+</form>
+<div th:replace="layout::footer"></div>
+</body>
+</html>

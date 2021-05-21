@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+          crossorigin="anonymous">
+    <style th:replace="~{css::style}"></style>
+</head>
+<body>
+
+<nav th:fragment="nav" class="navbar navbar-expand-lg navbar-dark bg-dark w-100" style="left: 0px">
+    <a class="navbar-brand"  th:href="@{/index}">BOOK </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/giveBack}">give back<span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+
+
+<!--        <a class="btn btn-warning" th:href="@{/createCategory}">Create new Category</a>-->
+<!--        <a class="btn btn-warning" th:href="@{/create}">Create new Blog</a>-->
+<!--        <form class="form-inline my-2 my-lg-0" action="/customers">-->
+<!--            <button type="button" class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal"-->
+<!--                    data-target="#exampleModal" data-whatever="@mdo" style="margin-right: 10px">Sau này dùng thử Modal-->
+<!--            </button>-->
+<!--        </form>-->
+
+<!--            <form class="d-flex" th:action="@{/search}">-->
+<!--                <div class="search-box">-->
+<!--                    <input type="text" placeholder="Name Product" class="search-txt" aria-label="Search"-->
+<!--                           name="name">-->
+<!--                    <input type="text" placeholder="Price Product" class="search-txt" aria-label="Search"-->
+<!--                           name="price">-->
+<!--                    <input type="date" placeholder="Start day" class="search-txt" aria-label="Search"-->
+<!--                           name="date1">-->
+<!--                    <input type="date" placeholder="End day" class="search-txt" aria-label="Search"-->
+<!--                           name="date2">-->
+<!--                    <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search">-->
+<!--                </div>-->
+<!--            </form>-->
+    </div>
+</nav>
+
+
+<div th:fragment="xoaModal(andressController)">
+    <div class="modal fade" id="xoa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="xoaLabel">Confirm xoá</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Bạn có muốn xoá  <input type="text" readonly id="test" size="3"/> này không?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" th:onclick="'submitFormDelete()'">DELETE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form th:action="@{${andressController}}" id="formDelete" th:method="post">
+        <input type="hidden" name="idDelete" id="idDelete"/>
+    </form>
+    <script>
+
+
+        function setIdDeleteToForm(id) {
+            document.getElementById("idDelete").value = id;
+            document.getElementById("test").value = id;
+
+        }
+
+        function submitFormDelete() {
+            document.getElementById("formDelete").submit();
+
+        }
+
+        function rollback() {
+            document.getElementById("default").submit();
+        }
+    </script>
+
+</div>
+
+
+    <footer th:fragment="footer" >
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    </footer>
+</body>
+</html>

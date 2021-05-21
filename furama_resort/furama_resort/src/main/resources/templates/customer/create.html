@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/header::header}">
+<body>
+<div id="form">
+    <form action="#" th:action="@{/customer/save}" th:object="${object}"
+          method="POST" novalidate="novalidate">
+<!--        <div>-->
+<!--            <label>Id</label>-->
+<!--            <div class="form-group green-border-focus">-->
+<!--                <input type="text"  readonly class="text-input" th:field="*{id}"/>-->
+<!--            </div>-->
+<!--        </div>-->
+        <div>
+            <label>Name</label>
+            <div class="form-group green-border-focus">
+                <input type="text"   class="text-input" th:field="*{name}"/>
+            </div>
+        </div>
+        <div>
+            <label>birthday</label>
+            <div class="form-group green-border-focus">
+                <input type="text"   class="text-input" th:field="*{birthday}"/>
+            </div>
+        </div>
+        <div>
+            <label>Gender</label>
+            <div class="form-group green-border-focus">
+                <input type="checkbox"   class="text-input" th:field="*{gender}"/> Male?
+            </div>
+        </div>
+        <div>
+            <label>idCard</label>
+            <div class="form-group green-border-focus">
+                <input type="text"   class="text-input" th:field="*{idCard}"/>
+            </div>
+        </div>
+        <div>
+            <label>phone</label>
+            <div class="form-group green-border-focus">
+                <input type="text"   class="text-input" th:field="*{phone}"/>
+            </div>
+        </div>
+        <div>
+            <label>email</label>
+            <div class="form-group green-border-focus">
+                <input type="text"   class="text-input" th:field="*{email}"/>
+            </div>
+        </div>
+        <div>
+            <label>address</label>
+            <div class="form-group green-border-focus">
+                <input type="text"   class="text-input" th:field="*{address}"/>
+            </div>
+        </div>
+        <div>
+            <label>address</label>
+            <div class="form-group green-border-focus">
+                <input type="text"   class="text-input" th:field="*{address}"/>
+            </div>
+        </div>
+        <select th:field="*{customerType}">
+            <option th:each="c : ${customerTypes}" th:value="${c.id}" th:text="${c.name}"></option>
+        </select>
+        <input type="submit" class="save-pro" value="Save Customer"/>
+    </form>
+</div>
+</body>
+</html>

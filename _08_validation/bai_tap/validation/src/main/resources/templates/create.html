@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="layout::head"></head>
+<body>
+
+<h1>FORM</h1>
+<form  th:object="${object}" th:action="@{/save}" method="post">
+    <div class="form-group">
+        <label for="input1">First Name</label>
+        <input type="text" class="form-control" id="input1" placeholder="first Name" th:field="*{firstName}">
+    </div>
+    <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">firstName Error</p>
+    <div class="form-group">
+        <label for="input2">Last Name</label>
+        <input type="text" class="form-control" id="input2" placeholder="last Name" th:field="*{lastName}">
+    </div>
+    <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">lastName Error</p>
+    <div class="form-group">
+        <label for="input3">Phone Number</label>
+        <input type="text" class="form-control" id="input3" placeholder="phone number" th:field="*{phoneNumer}">
+    </div>
+    <p th:if="${#fields.hasErrors('phoneNumer')}" th:errors="*{phoneNumer}">phoneNumer Error</p>
+
+    <div class="form-group">
+        <label for="input4">Age</label>
+        <input type="number" class="form-control" id="input4" placeholder="age" th:field="*{age}">
+    </div>
+    <p th:if="${#fields.hasErrors('age')}" th:errors="*{age}">age Error</p>
+
+    <div class="form-group">
+        <label for="input5">Email</label>
+        <input type="email" class="form-control" id="input5" placeholder="name@example.com" th:field="*{email}">
+    </div>
+    <p  th:if="${#fields.hasErrors('email')}" th:errors="*{email}">age Error</p>
+    <button type="submit" class="btn btn-light mb-2">Confirm Create</button>
+</form>
+
+<div th:replace="layout::footer"></div>
+</body>
+</html>

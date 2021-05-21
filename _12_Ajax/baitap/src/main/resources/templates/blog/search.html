@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<!--<head th:replace="layout::head"></head>-->
+<body>
+<div align="center">
+    <div th:each="row,rowStat : ${list}" id="searchList">
+        <div class="card" style="width: 18rem;float: left">
+            <img class="card-img-top" th:src="${row.image}" height="381" alt="day la hinh anh ne ">
+            <div class="card-body">
+                <h5 class="card-title" th:text="${row.title}"></h5>
+                <!--                        <p class="card-text" th:text="${row.description}"></p>-->
+                <p class="card-text" th:text="${row.dateBlog}"></p>
+                <a th:href="@{/blog/view/__${row.getId()}__ }" class="btn btn-primary">View</a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<!--<button type="button" class="btn btn-info" th:if="${list.hasPrevious()}"> <a th:href="@{'/index'(page=${list.number - 1})}"  class="btn btn-warning">Previous</a></button>-->
+<!--<span th:text="${list.number + 1}"></span>/<span th:text="${list.totalPages}"></span>-->
+<!--<button type="button" class="btn btn-info" th:if="${list.hasNext()}">  <a th:href="@{'/index'(page=${list.number + 1})}"  class="btn btn-warning">Next</a></button>-->
+
+<!--<div th:replace="layout::xoaModal('/product/delete')"></div>-->
+<!--<div th:replace="layout::footer"></div>-->
+<script>
+    $("#btnLoadMore").click(function () {
+        $.ajax({
+            type: "GET",
+            url: "/admin/load?currentIndex="+currentIndex,
+            success: function (data) {
+                console.log(currentIndex);
+                $(".tableAppend").append(data);
+                currentIndex+=2;
+            }
+        });
+</script>
+</body>
+</html>

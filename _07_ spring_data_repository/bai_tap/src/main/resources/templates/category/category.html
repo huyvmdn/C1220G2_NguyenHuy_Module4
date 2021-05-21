@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="layout::head"></head>
+<body>
+<nav th:replace="~{index::nav}"></nav>
+<p th:text="${mess}"></p>
+<div align="center">
+    <table id="table" class="table table-striped table-bordered bg-dark text-white">
+        <thead>
+        <tr>
+            <th>Categorys Id</th>
+            <th>Blog Title</th>
+            <th>Show</th>
+            <th>View</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="row,rowStat : ${categorys}">
+            <td th:text="${row.getId()}"></td>
+            <td th:text="${row.getName()}"></td>
+            <td><a class="btn btn-warning" th:href="@{/view-Category/__${row.getId()}__ }">Show</a></td>
+            <td><a class="btn btn-warning" th:href="@{/showCategory/__${row.getId()}__ }">Show</a></td>
+            <td><a class="btn btn-warning" th:href="@{/editCategory/__${row.getId()}__ }">Edit</a></td>
+            <td><a href="#" data-toggle="modal" data-target="#xoa" class="btn btn-danger"
+                   th:onclick="'setIdDeleteToForm(\'' + ${row.getId()} + '\');'"> Xóa bằng Model</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+<div class="modal fade" id="xoa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="xoaLabel">Confirm xoá</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Bạn có muốn xoá Blog <input type="text" readonly id="test" size="3"/> này không?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" th:onclick="'submitFormDelete()'">DELETE</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form th:action="@{/deleteCategory}" id="formDelete" th:method="post">
+    <input type="hidden" name="idDelete" id="idDelete"/>
+</form>
+
+
+<div th:replace="layout::footer"></div>
+
+<script>
+
+
+    function setIdDeleteToForm(id) {
+        document.getElementById("idDelete").value = id;
+        document.getElementById("test").value = id;
+
+    }
+
+    function submitFormDelete() {
+        document.getElementById("formDelete").submit();
+
+    }
+
+    function rollback() {
+        document.getElementById("default").submit();
+    }
+</script>
+</body>
+</html>

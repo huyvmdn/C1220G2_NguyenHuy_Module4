@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="layout::head"></head>
+<body>
+<p>
+    <a href="/index">Shop</a>
+</p>
+<h1>Your Cart</h1>
+<div  th:object="${cart}" >
+    <!--    <h3>Total Items: <span th:text="${cart.products.size()}"></span></h3>-->
+    <!--    <h3>Total Products: <span th:text="${cart."></span></h3>-->
+
+    <div align="center">
+        <div th:each="row,rowStat : ${cart.getProducts()}">
+            <div class="card" style="width: 18rem;float: left">
+                <img class="card-img-top" th:src="${row.image}" alt="day la hinh anh ne ">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${row.name}"></h5>
+                    <p class="card-text" th:text="${row.price}"></p>
+                    <p type="number" th:text="${row.amount}"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a th:href="@{/cart/add}">
+        <button id="search-button" type="submit" class="btn btn-primary">
+            ADD in Cart
+        </button>
+    </a>
+
+</div>
+
+<a class="navbar-brand" th:href="@{/index}">BACK </a>
+<div th:replace="layout::footer"></div>
+</body>
+</html>

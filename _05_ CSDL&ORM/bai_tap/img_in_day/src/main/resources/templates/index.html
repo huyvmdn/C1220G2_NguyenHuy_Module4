@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="headIndex">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+</head>
+<body>
+<img id="img-of-the-day">
+<br>
+<div id="form">
+    <form action="#" th:action="@{/save}" th:object="${comment}"
+          method="POST" novalidate="novalidate">
+        <div>
+            <label>star</label>
+            <select  th:field="*{star}">
+                <option value="1" >1 star</option>
+                <option value="2">2 star</option>
+                <option value="3">3 star</option>
+                <option value="4">4 star</option>
+                <option value="5">5 star</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <label>name</label>
+            <input type="text" class="text-danger" th:field="*{name}"/>
+        </div>
+        <br>
+        <div>
+            <label>feedback</label>
+            <textarea  th:field="*{feedback}"></textarea>
+        </div>
+        <br>
+        <input type="submit" value="Comment"/>
+    </form>
+</div>
+
+<!--<th:block th:each="s: ${countStar}">-->
+<!--    <p th:text="${s.star}"></p>-->
+<!--    <p th:text="${s.count}"></p>-->
+<!--</th:block>-->
+
+<th:block th:each="c,star: ${list}">
+    <hr>
+    STAR:
+    <span th:text="${c.star}"></span> <br><br>
+    Author: <span th:text="${c.name}"></span> <br>
+    Feedback: <span th:text="${c.feedback}"></span>
+</th:block>
+
+<script>
+    let query = 'https://api.nasa.gov/planetary/apod?api_key=0AQvB5GKZdb6sVrdl7HcImSn3JXTGiO767sxuFts';
+    let request = new XMLHttpRequest();
+    request.open('GET', query);
+    request.onload = function() {
+        if (request.status === 200) {
+            let response = JSON.parse(request.responseText);
+            document.getElementById('img-of-the-day').setAttribute('src', response.url);
+        }
+    };
+    request.send();
+</script>
+
+<div th:fragment="script">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    </script>
+</div>
+</body>
+</html>

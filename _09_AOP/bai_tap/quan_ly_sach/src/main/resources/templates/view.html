@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="layout::head"></head>
+<body>
+
+<a class="navbar-brand"  th:href="@{/index}">BOOK </a>
+<form th:object="${object}"  th:action="@{/save}" method="post" >
+
+    <div class="form-group">
+        ID:
+        <input type="text" class="form-control"   readonly th:field="*{id}">
+    </div>
+    <div class="form-group">
+        Name:
+        <input type="text" class="form-control" readonly placeholder="first Name" th:field="*{name}">
+    </div>
+    <div class="form-group">
+        author:
+        <input type="text" class="form-control" th:field="*{author}">
+    </div>
+    <div class="form-group">
+        publishing Company:
+        <input type="text" class="form-control" readonly th:field="*{publishingCompany}">
+    </div>
+    <div class="form-group">
+        stock:
+        <input type="text" class="form-control" readonly th:field="*{stock}">
+    </div>
+    <div class="form-group">
+        <img style="height: 200px;width: 150px"
+             th:src="${object.image}"
+             alt="Không hiển thị"/>
+    </div>
+    <div class="form-group">
+        introduce:
+        <input type="text" class="form-control" readonly  th:field="*{introduce}">
+    </div>
+    <div class="form-group" th:if="${submit == true} ">
+        <input type="hidden" class="form-control"  name="idBook"  th:value="${id}">
+        Your ID Card:
+        <input type="text" class="form-control" placeholder="Your ID Card" name="idCard" >
+
+    </div>
+    <div th:if="${submit == true}">
+    <button type="submit" class="btn btn-light mb-2">Confirm borrow book</button>
+    </div>
+</form>
+<a class="navbar-brand"  th:href="@{/index}">BACK </a>
+<div th:replace="layout::footer"></div>
+</body>
+</html>

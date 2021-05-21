@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  lang="en">
+<head th:replace="layout::head"></head>
+<body>
+<nav th:replace="~{index::nav}"></nav>
+<div id="form">
+    <form action="#" th:action="@{/save}" th:object="${blog}"
+          method="POST" novalidate="novalidate">
+        <div>
+            <label>ID</label>
+            <input type="text"  readonly class="text-input" th:field="*{id}"/>
+        </div>
+        <div>
+            <label>Title</label>
+            <input type="text" class="text-input" th:field="*{title}"/>
+        </div>
+
+        <br>
+        <div>
+            <label>content</label>
+            <div class="form-group green-border-focus">
+                <textarea class="form-control" id="exampleFormControlTextarea5" rows="5" th:field="*{content}"></textarea>
+            </div>
+        </div>
+        <br>
+        <input type="date" th:field="*{dateBlog}" id="datePicker" />
+        <select th:field="*{category}">
+            <option th:each="c : ${categorys}" th:value="${c.id}" th:text="${c.name}"></option>
+        </select>
+        <input type="submit" value="SAVE BLOG"/>
+    </form>
+</div>
+
+<div th:replace="layout::footer"></div>
+
+<script>
+
+    // $(document).ready( function() {
+    //     $('#datePicker').val(new Date().toDateInputValue());
+    // });​
+
+
+</script>
+</body>
+</html>

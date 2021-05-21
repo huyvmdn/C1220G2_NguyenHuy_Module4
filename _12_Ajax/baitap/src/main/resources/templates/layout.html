@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+          crossorigin="anonymous">
+    <style th:replace="~{css::style}"></style>
+</head>
+<body>
+
+<nav th:fragment="nav" class="navbar navbar-expand-lg navbar-dark  w-100"
+     style="color: black ;left: 0px; background-color: #e3f2fd;">
+    <a class="navbar-brand" th:href="@{/index}" style="color: black">MANAGEMENT </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/category/category}" style="color: black">CATEGORY<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/index}" style="color: black">BLOG<span class="sr-only">(current)</span></a>
+            </li>
+<!--            <li class="nav-item active">-->
+<!--                <a class="nav-link" th:href="@{/product/product}" style="color: black">PRODUCT<span class="sr-only">(current)</span></a>-->
+<!--            </li>-->
+        </ul>
+
+
+                <a class="btn btn-warning" th:href="@{/category/create}">Create new Category</a>
+                <a class="btn btn-warning" th:href="@{/blog/create}">Create new Blog</a>
+
+
+        <div class="d-flex" id="search" >
+            <div class="input-group search-box">
+                <div class="form-outline">
+                    <input type="text" placeholder="title blog" class="search-txt" aria-label="Search"
+                           id="name">
+                    <button id="search-button" type="submit" class="btn btn-primary">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+<div th:fragment="xoaModal(andressController)">
+    <div class="modal fade" id="xoa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="xoaLabel">Confirm xoá</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Bạn có muốn xoá <input type="text" readonly id="test" size="3"/> này không?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" th:onclick="'submitFormDelete()'">DELETE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form th:action="@{${andressController}}" id="formDelete" th:method="post">
+        <input type="hidden" name="idDelete" id="idDelete"/>
+    </form>
+    <script>
+
+
+        function setIdDeleteToForm(id) {
+            document.getElementById("idDelete").value = id;
+            document.getElementById("test").value = id;
+
+        }
+
+        function submitFormDelete() {
+            document.getElementById("formDelete").submit();
+
+        }
+
+        function rollback() {
+            document.getElementById("default").submit();
+        }
+    </script>
+
+</div>
+
+
+<footer th:fragment="footer">
+
+    <script src=”http://code.jquery.com/jquery-2.0.3.min.js”></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#search-button').click(function (event) {
+                    $.ajax({
+                        type: "GET",
+                        url: "/search/"+ $("#name").val(),
+                        dataType: "HTML",
+                        success: function (data) {
+                            $("#searchList").html(data);
+                        }
+                    });
+                });
+
+                // $.ajax({
+                //     url: 'http://localhost:8080/api/search',
+                //     type: 'POST',
+                //     dataType: 'json',
+                //     contentType: 'application/json',
+                //     data: JSON.stringify({
+                //         title:  $("#name").val(),
+                //     })
+                // }).done(function (response) {
+
+                //     console.log(response)
+                    //     $("#searchList").val(
+                    //         let a = $(this);
+                    // let list = a.attr("th:each").val("row,rowStat: ${row,rowStat : ${response}}")
+
+        })
+    </script>
+</footer>
+</body>
+</html>

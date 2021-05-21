@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{layout :: head}"></head>
+<body>
+<div th:insert="~{layout :: header}"></div>
+
+<div class="container">
+    <h1 style="color: teal" class="text-center"><span th:text="#{listCustomerOfProvince}"></span> <span th:text="${provinceName}"></span></h1>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>No</th>
+            <th th:text="#{provinceName}"></th>
+            <th th:text="#{title}"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="customer, iterStat : ${listCustomer}">
+            <tr>
+                <td th:text="${iterStat.count}"></td>
+                <th th:if="${iterStat.first}">
+                    <p th:text="${provinceName}"></p>
+                </th>
+                <td th:if="!${iterStat.first}">
+                </td>
+                <td th:text="${customer.name}"></td>
+            </tr>
+        </th:block>
+        <tr>
+            <td></td>
+            <td>
+                <a th:href="@{/customer}">
+                    <button class="btn btn-info" th:text="#{backToCustomerList}"></button>
+                </a>
+            </td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div th:replace="/layout :: script"></div>
+<div th:insert="~{layout :: footer}"></div>
+</body>
+</html>
