@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body >
+<div id="form">
+    <form th:action="@{/customer/save}" th:object="${object}"
+          method="POST" novalidate="novalidate">
+        <div>
+            <label>Id</label>
+            <div class="form-group green-border-focus">
+                <input type="text"   class="text-input" th:field="*{id}"/>
+            </div>
+            <p th:if="${#fields.hasErrors('id')}" th:errors="*{id}">firstName Error</p>
+        </div>
+        <div>
+            <label>Name</label>
+            <div class="form-group green-border-focus">
+                <input type="text"   class="text-input" th:field="*{name}"/>
+            </div>
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+        </div>
+        <div>
+            <label>birthday</label>
+            <div class="form-group green-border-focus">
+                <input type="date"   class="text-input" th:field="*{birthday}"/>
+            </div>
+            <p th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}"></p>
+        </div>
+        <div>
+            <label>Gender</label>
+            <div class="form-group green-border-focus">
+                <input type="checkbox"   class="text-input" th:checked='${object.gender}'  /> Male?
+            </div>
+            <p th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></p>
+        </div>
+
+        <div>
+            <label>idCard</label>
+            <div class="form-group green-border-focus">
+                <input type="text"   class="text-input" th:field="*{idCard}"/>
+            </div>
+            <p th:if="${#fields.hasErrors('idCard')}" th:errors="*{idCard}"></p>
+        </div>
+        <div>
+            <label>phone</label>
+            <div class="form-group green-border-focus">
+                <input type="text"   class="text-input" th:field="*{phone}"/>
+            </div>
+            <p th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
+        </div>
+        <div>
+            <label>email</label>
+            <div class="form-group green-border-focus">
+                <input type="text"   class="text-input" th:field="*{email}"/>
+            </div>
+            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+        </div>
+
+        <div>
+            <label>address</label>
+            <div class="form-group green-border-focus">
+                <input type="text"   class="text-input" th:field="*{address}"/>
+            </div>
+            <p th:if="${#fields.hasErrors('address')}" th:errors="*{address}">firstName Error</p>
+        </div>
+        <select th:field="*{customerType}">
+            <option th:each="c : ${customerTypes}" th:value="${c.id}" th:text="${c.name}"></option>
+        </select>
+        <p th:if="${#fields.hasErrors('customerType')}" th:errors="*{customerType}"></p>
+        <input type="submit" class="save-pro btn btn-secondary" id="kich" value="Save Customer"/>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    </form>
+</div>
+
+</body>
+</html>

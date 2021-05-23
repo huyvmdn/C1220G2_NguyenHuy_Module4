@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/header::header}"></head>
+<style>
+    p {
+        color: red;
+    }
+</style>
+<body>
+<nav th:replace="~{layout::nav}"></nav>
+<div style="height: 30px"></div>
+<div class="row">
+    <div id="form" >
+        <form th:action="@{/customer/save}" th:object="${object}"
+              method="POST" novalidate="novalidate" class="form">
+            <div>
+                <label>code</label>
+                <div class="form-group green-border-focus">
+                    <input type="text" class="form-control" th:field="*{code}"/>
+                </div>
+                <p th:if="${#fields.hasErrors('id')}" th:errors="*{code}"></p>
+            </div>
+            <div>
+                <label>Name</label>
+                <div class="form-group green-border-focus">
+                    <input type="text" class="form-control" th:field="*{name}"/>
+                </div>
+                <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+            </div>
+            <div>
+                <label>birthday</label>
+                <div class="form-group green-border-focus">
+                    <input type="date" class="form-control" th:field="*{birthday}"/>
+                </div>
+                <p th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}"></p>
+            </div>
+            <div>
+                <label>Gender</label>
+                <div class="form-group green-border-focus">
+                    <input type="checkbox" class="form-control" th:value="${object.gender}" th:field='${object.gender}'/> Male?
+                </div>
+                <p th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></p>
+            </div>
+
+            <div>
+                <label>idCard</label>
+                <div class="form-group green-border-focus">
+                    <input type="text" class="form-control" th:field="*{idCard}"/>
+                </div>
+                <p th:if="${#fields.hasErrors('idCard')}" th:errors="*{idCard}"></p>
+            </div>
+            <div>
+                <label>phone</label>
+                <div class="form-group green-border-focus">
+                    <input type="text" class="form-control" th:field="*{phone}"/>
+                </div>
+                <p th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
+            </div>
+            <div>
+                <label>email</label>
+                <div class="form-group green-border-focus">
+                    <input type="text" class="form-control" th:field="*{email}"/>
+                </div>
+                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+            </div>
+
+            <div>
+                <label>address</label>
+                <div class="form-group green-border-focus">
+                    <input type="text" class="form-control" th:field="*{address}"/>
+                </div>
+                <p th:if="${#fields.hasErrors('address')}" th:errors="*{address}">firstName Error</p>
+            </div>
+            <select th:field="*{customerType}">
+                <option th:each="c : ${customerTypes}" th:value="${c.id}" th:text="${c.name}"></option>
+            </select>
+            <p th:if="${#fields.hasErrors('customerType')}" th:errors="*{customerType}"></p>
+            <input type="submit" class="save-pro btn btn-secondary" id="kich" value="Save Customer"/>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </form>
+    </div>
+    <div class="col-5"></div>
+</div>
+</body>
+</html>
