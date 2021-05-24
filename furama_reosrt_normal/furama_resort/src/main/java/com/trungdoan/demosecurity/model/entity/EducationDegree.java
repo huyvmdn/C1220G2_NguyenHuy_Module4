@@ -29,4 +29,8 @@ public class EducationDegree {
     public EducationDegree(String name) {
         this.name = name;
     }
+
+    public EducationDegree(Long id) {
+        this.id = id;
+    }
 }

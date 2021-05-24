@@ -36,7 +36,7 @@ public class CustomerController {
         ModelAndView modelAndView = new ModelAndView("/customer/customer");
         Page<Customer> list =  customerService.findAll(pageable);
         if (list==null) {
-            return new ModelAndView("/authentication/403");
+            return new ModelAndView("/authentication/error");
         }
         modelAndView.addObject("list",list);
         modelAndView.addObject("object",new Customer());

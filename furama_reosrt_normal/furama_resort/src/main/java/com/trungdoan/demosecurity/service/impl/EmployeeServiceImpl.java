@@ -46,4 +46,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     public boolean checkExistUser(String email) {
         return employeeRepository.existsEmployeeByEmail(email);
     }
+
+    @Override
+    public Employee findByEmail(String email) {
+        return employeeRepository.findByEmail(email);
+    }
 }

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
+<head th:replace="~{layout/header::header}"></head>
+
+
+<body >
+<nav th:replace="~{layout::nav}"></nav>
+<div style="height: 30px"></div>
+<div class="row " style="margin-right: 15px; height: 700px">
+    <div class="col-2 bg-light">
+        <hr style="background-color: white">
+        <a style="text-align:center"  th:href="@{/contract/create/__${object.id}__ }"
+           th:text="#{create.contract}"></a>
+        <hr>
+        <p style="text-align: center;">Item 2</p>
+        <hr style="background-color: white">
+        <p style="text-align: center;">Item 3</p>
+    </div>
+    <div class="col-10 bg-light">
+<!--        <h2 th:text="${mess}" style="color:white;"></h2>-->
+    CUSTOMER
+        <table id="table" class="table table-striped table-bordered bg-light container ">
+            <thead>
+            <tr>
+                <th> Id</th>
+                <th> Code</th>
+                <th> Name</th>
+                <th> gender</th>
+                <th> idCard</th>
+                <th> phone</th>
+                <th> email</th>
+                <th> address</th>
+                <th> customerType</th>
+                <th>action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:object="${object}">
+                <td th:text="${object.id}"></td>
+                <td th:text="${object.code}"></td>
+                <td th:text="${object.name}"></td>
+                <td th:text="${object.gender} ? 'Male':'Female' "></td>
+                <td th:text="${object.idCard}"></td>
+                <td th:text="${object.phone}"></td>
+                <td th:text="${object.email}"></td>
+                <td th:text="${object.address}"></td>
+                <td th:text="${object.customerType.name}"></td>
+
+                <td>
+                    <a class="btn btn-warning" th:href="@{/customer/edit/__${object.id}__ }">Edit</a>
+                    <a href="#" data-toggle="modal" data-target="#xoa" class="btn btn-danger"
+                       th:onclick="'setIdDeleteToForm(\'' + ${object.id} + '\');'"> Xóa </a>
+
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div style="height: 50px"></div>
+        CONTRACT
+        <table class="table table-striped table-bordered bg-light container ">
+            <thead>
+            <tr>
+                <th> Id</th>
+                <th> startDate</th>
+                <th> endDate</th>
+                <th> deposit</th>
+                <th> totalMoney</th>
+                <th> employee</th>
+                <th> customer</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="row,rowStat : ${object.getContracts()}">
+                <td th:text="${row.id}"></td>
+                <td th:text="${row.startDate}"></td>
+                <td th:text="${row.endDate}"></td>
+                <td th:text="${row.deposit} ? 'Male':'Female' "></td>
+                <td th:text="${row.totalMoney}"></td>
+                <td th:text="${row.employee.name}"></td>
+                <td th:text="${row.customer.name}"></td>
+
+                <td ><a class="btn btn-warning" th:href="@{/contract/view/__${row.getId()}__ }">Show contract</a></td>
+                <td><a class="btn btn-warning" th:href="@{/contractDetail/view/__${row.getId()}__ }">contract Detail</a>
+                <td><a class="btn btn-warning" th:href="@{/contract/edit/__${row.getId()}__ }">Edit</a>
+                    <a  href="#" data-toggle="modal"  sec:authorize="hasRole('ADMIN')" data-target="#xoa" class="btn btn-danger"
+                       th:onclick="'setIdDeleteToForm(\'' + ${row.id} + '\');'"> Xóa </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+<!--        <button stype="button" class="btn btn-outline-success my-2 my-sm-0" th:if="${list.hasPrevious()}"><a-->
+<!--                th:href="@{'/search'(customerName=${customerName},address=${address},customerType=${customerType},page=${list.number - 1})}"-->
+<!--        >Previous</a></button>-->
+<!--        <span th:text="${list.number + 1}"></span>/<span th:text="${list.totalPages}"></span>-->
+<!--        <button type="button" class="btn btn-outline-success my-2 my-sm-0" th:if="${list.hasNext()}"><a-->
+<!--                th:href="@{'/search'(customerName=${customerName},address=${address},customerType=${customerType},page=${list.number + 1})}"-->
+<!--        >Next</a></button>-->
+
+    </div>
+</div>
+
+<div style="height: 100px"></div>
+<div th:replace="layout::xoaModal('/contract/delete')"></div>
+<footer th:replace="~{layout/footer :: footer}"></footer>
+</body>
+</html>

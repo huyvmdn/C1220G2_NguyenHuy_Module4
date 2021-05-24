@@ -49,10 +49,10 @@
                 <td th:text="${row.position.name}"></td>
                 <td th:text="${row.educationDegree.name}"></td>
                 <td th:text="${row.division.name}"></td>
-                <td><a class="btn btn-warning" th:href="@{/employee/show/__${row.getId()}__ }">show</a>
-                    <a class="btn btn-warning" th:href="@{/employee/edit/__${row.getId()}__ }">Edit</a>
-                    <a href="#" data-toggle="modal" data-target="#xoa" class="btn btn-danger"
-                       th:onclick="'setIdDeleteToForm(\'' + ${row.id} + '\');'"> Xóa </a>
+                <td><a class="btn btn-primary" style="background-color:  #e3f2fd;color: black" th:href="@{/employee/show/__${row.getId()}__ }">show</a>
+                    <a class="btn btn-primary" style="background-color:  #e3f2fd;color: black" th:href="@{/employee/edit/__${row.getId()}__ }">Edit</a>
+                    <a href="#" data-toggle="modal" data-target="#xoa" class="btn btn-primary" style="background-color:  #e3f2fd;color: black"
+                       th:onclick="'setIdDeleteToForm(\'' + ${row.getId()} + '\');'"> Xóa </a>
                 </td>
 
             </tr>

@@ -2,7 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{layout/header::header}"></head>
 
-
 <body >
 <nav th:replace="~{layout::nav}"></nav>
 <div style="height: 30px"></div>
@@ -11,6 +10,9 @@
         <hr style="background-color: white">
         <a style="text-align:center"  th:href="@{/customer/create}"
             th:text="#{create.customer}"></a>
+        <hr>
+        <a style="text-align:center"   th:href="@{/contract/create}"
+           th:text="#{create.contract}"></a>
         <hr>
         <p style="text-align: center;" class="searchCustomer">Search</p>
         <form th:action="@{/customer/search}" method="get" class="search-toggle form"  >
@@ -23,6 +25,7 @@
             <input type="submit" class="button btn-light" value="search">
         </form>
         <hr style="background-color: white">
+
         <p style="text-align: center;">Item 3</p>
     </div>
     <div class="col-10 bg-light">
@@ -54,10 +57,12 @@
                 <td th:text="${row.email}"></td>
                 <td th:text="${row.address}"></td>
                 <td th:text="${row.customerType.name}"></td>
-                <td><a class="btn btn-warning" th:href="@{/customer/edit/__${row.getId()}__ }">Edit</a>
-                    <a href="#" data-toggle="modal" data-target="#xoa" class="btn btn-danger"
-                       th:onclick="'setIdDeleteToForm(\'' + ${row.id} + '\');'"> Xóa </a>
+                <td><a class="btn btn-primary" style="background-color:  #e3f2fd;color: black" th:href="@{/contract/view/__${row.getId()}__ }">Show contract</a></td>
+                <td><a class="btn btn-primary" style="background-color:  #e3f2fd;color: black" th:href="@{/customer/edit/__${row.getId()}__ }">Edit</a>
+                    <a href="#" data-toggle="modal" data-target="#xoa" class="btn btn-primary" style="background-color:  #e3f2fd;color: black"
+                       th:onclick="'setIdDeleteToForm(\'' + ${row.getId()} + '\');'"> Xóa </a>
                 </td>
+
             </tr>
             </tbody>
         </table>
@@ -83,6 +88,7 @@
     $(document).ready(function () {
         $('.searchCustomer').click(function () {
             $('.search-toggle').toggle()
+
         })
     })
     // function openModal(flag) {

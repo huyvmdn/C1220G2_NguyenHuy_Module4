@@ -4,4 +4,5 @@ import com.trungdoan.demosecurity.model.entity.Employee;
 
 public interface EmployeeService extends GeneralService<Employee> {
     public boolean checkExistUser(String email);
+    public Employee findByEmail(String email);
 }

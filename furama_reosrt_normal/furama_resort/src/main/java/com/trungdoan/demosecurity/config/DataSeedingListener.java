@@ -51,6 +51,10 @@ public class DataSeedingListener implements ApplicationListener<ContextRefreshed
 
     @Autowired
     private CustomerRepository customerRepository;
+
+    @Autowired
+    private EmployeeRepository employeeRepository;
+
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         if (roleRepository.findByName("ROLE_ADMIN") == null) {
@@ -74,6 +78,8 @@ public class DataSeedingListener implements ApplicationListener<ContextRefreshed
             roles.add(roleRepository.findByName("ROLE_MEMBER"));
             admin.setRoles(roles);
             userRepository.save(admin);
+
+
         }
 
         //Them Member
@@ -85,7 +91,9 @@ public class DataSeedingListener implements ApplicationListener<ContextRefreshed
             roles.add(roleRepository.findByName("ROLE_MEMBER"));
             user.setRoles(roles);
             userRepository.save(user);
+
         }
+
 //        THEM CHUC VU
 
         if (positionRepository.findByName("Receptionist") == null) {
@@ -207,10 +215,11 @@ public class DataSeedingListener implements ApplicationListener<ContextRefreshed
             serviceTypeRepository.save(new ServiceType("Room"));
         }
 
-//        if (customerRepository.findByName("Nguyen Huy") == null) {
-//           CustomerType customerType=  customerTypeRepository.findById(1);
-//            Customer nguyen_huy = customerRepository.save(new Customer("KH-1234", "Nguyen Huy", "1991-4-4", true, "123456789", "0905830060", "huy@gmail.com", "123 Le Loi",customerType));
-//        }
+        if (customerRepository.findByName("Bui Thanh Tai") == null) {
+           CustomerType customerType=  customerTypeRepository.findByName("Diamond");
+            Customer nguyen_huy = customerRepository.save(new Customer("KH-1234", "Bui Thanh Tai", "1991-4-4", true, "123456789", "0905830060", "huy@gmail.com", "123 Le Loi",customerType));
+        }
+
     }
 
 }

@@ -26,6 +26,7 @@
                 <th> code</th>
                 <th> Name</th>
                 <th> area</th>
+                <th> cost</th>
                 <th> maxPeople</th>
                 <th> standardRoom</th>
                 <th> descriptionOtherConvenience</th>
@@ -50,10 +51,10 @@
                 <td th:text="${row.numberOfFloors}"></td>
                 <td th:text="${row.serviceType.name}"></td>
                 <td th:text="${row.rentType.name}"></td>
-                <td><a class="btn btn-warning" th:href="@{/service/show/__${row.getId()}__ }">show</a>
-                    <a class="btn btn-warning" th:href="@{/service/edit/__${row.getId()}__ }">Edit</a>
-                    <a href="#" data-toggle="modal" data-target="#xoa" class="btn btn-danger"
-                       th:onclick="'setIdDeleteToForm(\'' + ${row.id} + '\');'"> Xóa </a>
+                <td><a class="btn btn-primary" style="background-color:  #e3f2fd;color: black" th:href="@{/service/show/__${row.getId()}__ }">show</a>
+                    <a class="btn btn-primary" style="background-color:  #e3f2fd;color: black" th:href="@{/service/edit/__${row.getId()}__ }">Edit</a>
+                    <a href="#" data-toggle="modal" data-target="#xoa" class="btn btn-primary" style="background-color:  #e3f2fd;color: black"
+                       th:onclick="'setIdDeleteToForm(\'' + ${row.getId()} + '\');'"> Xóa </a>
                 </td>
 
             </tr>

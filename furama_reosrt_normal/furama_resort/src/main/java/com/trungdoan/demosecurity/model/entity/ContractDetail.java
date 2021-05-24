@@ -27,8 +27,10 @@ public class ContractDetail {
     private int quatity;
 
 
-    @OneToMany(mappedBy = "contractDetail", cascade = CascadeType.ALL)
-    private List<Contract> contracts;
+
+    @ManyToOne
+    @JoinColumn(name="contract_id", nullable=false)
+    private Contract contract;
 
     @ManyToOne
     @JoinColumn(name="attachService_id", nullable=false)

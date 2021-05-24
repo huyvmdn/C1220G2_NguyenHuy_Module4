@@ -29,4 +29,7 @@ public class Division {
         this.name = name;
     }
 
+    public Division(Long id) {
+        this.id = id;
+    }
 }

@@ -5,10 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -24,15 +26,17 @@ public class Contract {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "contract_id")
     private Long id;
+    @NotBlank
     @Column(columnDefinition = "date")
     private String startDate;
+
     @Column(columnDefinition = "date")
     private String endDate;
     @Min(value = 0)
-    @NumberFormat(style = NumberFormat.Style.PERCENT)
+    @NumberFormat(style = NumberFormat.Style.NUMBER)
     private Double deposit;
     @Min(value = 0)
-    @NumberFormat(style = NumberFormat.Style.PERCENT)
+    @NumberFormat(style = NumberFormat.Style.NUMBER)
     private Double totalMoney;
 
     @ManyToOne
@@ -43,8 +47,9 @@ public class Contract {
     @JoinColumn(name="customer_id", nullable=false)
     private Customer customer;
 
-    @ManyToOne
-    @JoinColumn(name="contractDetail_id", nullable=false)
-    private ContractDetail contractDetail;
-//    service_id int,
+
+    @OneToMany(mappedBy = "contract", cascade = CascadeType.ALL)
+    private List<ContractDetail> contractDetails;
+
+
 }

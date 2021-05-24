@@ -41,7 +41,7 @@ public class EmployeeController {
     @Autowired
     private UserService userService;
 
-    @ModelAttribute("serviceTypes")
+    @ModelAttribute("positions")
     public Iterable<Position> positions() {
         return positionService.findAll();
     }
@@ -75,6 +75,8 @@ public class EmployeeController {
         return "employee/update";
     }
 
+
+
     @PostMapping("employee/update")
     public String updateObject(@Valid @ModelAttribute("object") Employee object, BindingResult bindingResult, RedirectAttributes redirect) {
         if (bindingResult.hasFieldErrors()) {
@@ -107,7 +109,7 @@ public class EmployeeController {
         userService.save(user);
         object.setUser(user);
         employeeService.save(object);
-        redirect.addFlashAttribute("mess","User "+object.getId()+" "+object.getName()+" created successfully");
+        redirect.addFlashAttribute("mess",object.getId()+" "+object.getName()+" created successfully");
         return "redirect:/employee/employee";
     }
 

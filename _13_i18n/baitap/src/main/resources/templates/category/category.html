@@ -24,7 +24,6 @@
                 <a href="#" data-toggle="modal" data-target="#xoa" class="btn btn-primary" style="background-color:  #e3f2fd;color: black"
                    th:onclick="'setIdDeleteToForm(\'' + ${row.getId()} + '\');'"> Xóa </a>
             </td>
-
         </tr>
         </tbody>
     </table>
@@ -32,8 +31,6 @@
 <button type="button" class="btn btn-info" th:if="${list.hasPrevious()}"> <a th:href="@{'/category/category'(page=${list.number - 1})}"  class="btn btn-warning">Previous</a></button>
 <span th:text="${list.number + 1}"></span>/<span th:text="${list.totalPages}"></span>
 <button type="button" class="btn btn-info" th:if="${list.hasNext()}">  <a th:href="@{'/category/category'(page=${list.number + 1})}"  class="btn btn-warning">Next</a></button>
-
-
 <div th:replace="layout::xoaModal('/category/delete')"></div>
 <div th:replace="layout::footer"></div>
 </body>

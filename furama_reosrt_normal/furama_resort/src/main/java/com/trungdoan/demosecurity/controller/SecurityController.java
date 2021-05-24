@@ -17,6 +17,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.Cookie;
@@ -27,6 +28,7 @@ import java.util.Set;
 
 
 @Controller
+@SessionAttributes("user")
 public class SecurityController {
     @Autowired
     UserService userService;
@@ -34,6 +36,10 @@ public class SecurityController {
     @Autowired
     RoleService roleService;
 
+    @ModelAttribute("user")
+    public User setUpUserForm() {
+        return new User();
+    }
 
     @GetMapping("/login")
     public String getLoginPage(Model model){
