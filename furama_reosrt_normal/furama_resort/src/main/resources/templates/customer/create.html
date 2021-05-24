@@ -9,8 +9,8 @@
 <body>
 <nav th:replace="~{layout::nav}"></nav>
 <div style="height: 30px"></div>
-<div class="row">
-    <div id="form" >
+<div class="row ">
+    <div id="form" class="col-7" >
         <form th:action="@{/customer/save}" th:object="${object}"
               method="POST" novalidate="novalidate" class="form">
             <div>

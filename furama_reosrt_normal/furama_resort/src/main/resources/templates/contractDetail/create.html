@@ -11,41 +11,30 @@
 <div style="height: 30px"></div>
 <div class="row">
     <div id="form" class="col-7">
-        <form th:action="@{/contract/save}" th:object="${object}"
+        <form th:action="@{/contractDetail/save}" th:object="${object}"
               method="POST" novalidate="novalidate" class="form">
-
-
             <div>
                 <label>quatity</label>
                 <div class="form-group green-border-focus">
-                    <input type="date" class="form-control" th:field="*{quatity}"/>
+                    <input type="text" class="form-control" th:field="*{quatity}"/>
                 </div>
                 <p th:if="${#fields.hasErrors('quatity')}" th:errors="*{quatity}"></p>
             </div>
-            
             <div>
-                <label>endDate</label>
-                <div class="form-group green-border-focus">
-                    <input type="date" class="form-control" th:field="*{endDate}"/>
-                </div>
-                <p th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}"></p>
-            </div>
-            <div>
-                <label>deposit</label>
-                <div class="form-group green-border-focus">
-                    <input type="text" class="form-control"th:field='${object.deposit}'/>
-                </div>
-                <p th:if="${#fields.hasErrors('deposit')}" th:errors="*{deposit}"></p>
+                contract
+                <select th:field="*{contract}">
+                    <option th:each="c : ${contracts}" th:value="${c.id}" th:text="${c.customer.name}"></option>
+                </select>
             </div>
 
             <div>
-                <label>totalMoney</label>
-                <div class="form-group green-border-focus">
-                    <input type="text" class="form-control" th:field="*{totalMoney}"/>
-                </div>
-                <p th:if="${#fields.hasErrors('totalMoney')}" th:errors="*{totalMoney}"></p>
+                attachService
+                <select th:field="*{attachService}">
+                    <option th:each="c : ${attachServices}" th:value="${c.id}" th:text="${c.name}"></option>
+                </select>
             </div>
-            <input type="submit" class="save-pro btn btn-secondary" id="kich" value="Save Customer"/>
+
+            <input type="submit" class="save-pro btn btn-secondary" id="kich" value="Save contract Detail"/>
 
         </form>
     </div>

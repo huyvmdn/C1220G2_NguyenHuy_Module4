@@ -78,7 +78,7 @@
                 <option th:each="c : ${divisions}" th:value="${c.id}" th:text="${c.name}"></option>
             </select>
             <p th:if="${#fields.hasErrors('division')}" th:errors="*{division}"></p>
-            <input type="submit" class="save-pro btn btn-secondary" id="kich" value="Save Customer"/>
+            <input type="submit" class="save-pro btn btn-secondary" id="kich" value="Save Employee"/>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </form>
     </div>

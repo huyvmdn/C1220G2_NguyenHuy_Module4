@@ -3,17 +3,33 @@
 <head th:replace="~{layout/header::header}"></head>
 
 
-<body >
+<body>
 <nav th:replace="~{layout::nav}"></nav>
 <div style="height: 30px"></div>
 <div class="row " style="margin-right: 15px; height: 700px">
     <div class="col-2 bg-light">
         <hr style="background-color: white">
-        <a style="text-align:center"  th:href="@{/employee/create}"
+        <a style="text-align:center" th:href="@{/employee/create}"
            class=" btn btn-primary" th:text="#{create.employee}"></a>
         <hr>
-        <p style="text-align: center;">Item 2</p>
-        <hr style="background-color: white">
+        <p style="text-align: center;" class="searchAll">Search</p>
+        <form th:action="@{/employee/search}" method="get" class="search-toggle form">
+            tên: <input type="text" class="form-control" name="nameEmployee" th:value="${nameEmployee}">
+            <select class="form-control" name="position" th:value="${position}">
+                <option value="">-- chọn --</option>
+                <option th:each="c : ${positions}" class="form-control" th:value="${c.id}" th:text="${c.name}"></option>
+            </select>
+            <select class="form-control" name="educationDegree" th:value="${educationDegree}">
+                <option value="">-- chọn --</option>
+                <option th:each="c : ${educationDegrees}" class="form-control" th:value="${c.id}" th:text="${c.name}"></option>
+            </select>
+            <select class="form-control" name="division" th:value="${division}">
+                <option value="">-- chọn --</option>
+                <option th:each="c : ${divisions}" class="form-control" th:value="${c.id}" th:text="${c.name}"></option>
+            </select>
+            <input type="submit" class="button btn-light" value="search">
+        </form>
+        <hr>
         <p style="text-align: center;">Item 3</p>
     </div>
     <div class="col-10 bg-light">
@@ -49,22 +65,25 @@
                 <td th:text="${row.position.name}"></td>
                 <td th:text="${row.educationDegree.name}"></td>
                 <td th:text="${row.division.name}"></td>
-                <td><a class="btn btn-primary" style="background-color:  #e3f2fd;color: black" th:href="@{/employee/show/__${row.getId()}__ }">show</a>
-                    <a class="btn btn-primary" style="background-color:  #e3f2fd;color: black" th:href="@{/employee/edit/__${row.getId()}__ }">Edit</a>
-                    <a href="#" data-toggle="modal" data-target="#xoa" class="btn btn-primary" style="background-color:  #e3f2fd;color: black"
+                <td><a class="btn btn-primary" style="background-color:  #e3f2fd;color: black"
+                       th:href="@{/employee/show/__${row.getId()}__ }">show</a>
+                    <a class="btn btn-primary" style="background-color:  #e3f2fd;color: black"
+                       th:href="@{/employee/edit/__${row.getId()}__ }">Edit</a>
+                    <a href="#" data-toggle="modal" data-target="#xoa" class="btn btn-primary"
+                       style="background-color:  #e3f2fd;color: black"
                        th:onclick="'setIdDeleteToForm(\'' + ${row.getId()} + '\');'"> Xóa </a>
                 </td>
 
             </tr>
             </tbody>
         </table>
-<!--        <button stype="button" class="btn btn-outline-success my-2 my-sm-0" th:if="${list.hasPrevious()}"><a-->
-<!--                th:href="@{'/search'(name=${name},page=${list.number - 1})}"-->
-<!--        >Previous</a></button>-->
-<!--        <span th:text="${list.number + 1}"></span>/<span th:text="${list.totalPages}"></span>-->
-<!--        <button type="button" class="btn btn-outline-success my-2 my-sm-0" th:if="${list.hasNext()}"><a-->
-<!--                th:href="@{'/search'(name=${name},page=${list.number + 1})}"-->
-<!--        >Next</a></button>-->
+        <a class="btn btn-outline-success my-2 my-sm-0" th:if="${list.hasPrevious()}"
+           th:href="@{'/employee/search'(nameEmployee=${nameEmployee},position=${position},educationDegree=${educationDegree},division=${division},page=${list.number - 1})}"
+        >Previous</a>
+        <span th:text="${list.number + 1}"></span>/<span th:text="${list.totalPages}"></span>
+        <a th:if="${list.hasNext()}" class="btn btn-outline-success my-2 my-sm-0"
+           th:href="@{'/employee/search'(nameEmployee=${nameEmployee},position=${position},educationDegree=${educationDegree},division=${division},page=${list.number + 1})}"
+        >Next</a>
 
     </div>
 </div>
@@ -72,7 +91,6 @@
 <div style="height: 100px"></div>
 
 <div th:replace="layout::xoaModal('/employee/delete')"></div>
-
 
 
 <footer th:replace="~{layout/footer :: footer}"></footer>

@@ -16,6 +16,7 @@
             <div>
                 Customer:
                 <select th:field="*{customer}">
+                    <option  th:if="${customer}"  th:value="customer.id" th:text="${customer.code}"></option>
                     <option th:each="c : ${customers}" th:value="${c.id}" th:text="${c.code}"></option>
                 </select>
             </div>
@@ -49,7 +50,7 @@
                 </div>
                 <p th:if="${#fields.hasErrors('totalMoney')}" th:errors="*{totalMoney}"></p>
             </div>
-            <input type="submit" class="save-pro btn btn-secondary" id="kich" value="Save Customer"/>
+            <input type="submit" class="save-pro btn btn-secondary" id="kich" value="Save Contact"/>
 
         </form>
     </div>

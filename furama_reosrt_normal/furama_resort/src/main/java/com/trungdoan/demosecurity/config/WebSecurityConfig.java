@@ -39,11 +39,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 //Cấu hình cho các đuòng dẫn không cần xác thực
-                .antMatchers("/", "/login", "/register").permitAll()
+                .antMatchers("/", "/login").permitAll()
                 //Cấu hình cho các đường dẫn đăng nhập bằng Role là Member, Admin
                 .antMatchers("/user/**","/customer/**","/service/**","/api/**","/contract/**").hasAnyRole("MEMBER", "ADMIN")
                 //cấu hình cho đường dẫn admin, chỉ có Role admin mới vào được
-                .antMatchers("/admin/**","/employee/**").hasRole("ADMIN")
+                .antMatchers("/admin/**","/employee/**","/register").hasRole("ADMIN")
                 .and()
                 //formlogin
                 .formLogin()

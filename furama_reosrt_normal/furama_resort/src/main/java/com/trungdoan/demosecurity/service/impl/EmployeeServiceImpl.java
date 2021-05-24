@@ -51,4 +51,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee findByEmail(String email) {
         return employeeRepository.findByEmail(email);
     }
+
+    @Override
+    public Page<Employee>  search4(String nameEmployee, String position, String educationDegree, String division, Pageable pageable) {
+        return employeeRepository.search4(nameEmployee,position,educationDegree,division,pageable);
+    }
 }

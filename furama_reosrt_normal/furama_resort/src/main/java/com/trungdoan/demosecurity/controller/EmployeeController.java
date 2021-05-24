@@ -120,6 +120,22 @@ public class EmployeeController {
         return "redirect:/employee/employee";
     }
 
+    @GetMapping("/employee/search")
+    public String search(@RequestParam(value = "nameEmployee", defaultValue = "") String nameEmployee,
+                         @RequestParam(value = "position", defaultValue = "") String position,
+                         @RequestParam(value = "educationDegree", defaultValue = "") String educationDegree,
+                         @RequestParam(value = "division", defaultValue = "") String division,
+
+                         @PageableDefault(value = 5) Pageable pageable,
+                         Model model) {
+
+        model.addAttribute("list", employeeService.search4(nameEmployee, position, educationDegree,division,pageable));
+        model.addAttribute("nameEmployee", nameEmployee);
+        model.addAttribute("position", position);
+        model.addAttribute("educationDegree", educationDegree);
+        model.addAttribute("division", division);
+        return "/employee/employee";
+    }
 
 }
 

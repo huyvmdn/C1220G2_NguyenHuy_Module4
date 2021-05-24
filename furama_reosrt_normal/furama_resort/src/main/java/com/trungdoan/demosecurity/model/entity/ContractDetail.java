@@ -27,7 +27,6 @@ public class ContractDetail {
     private int quatity;
 
 
-
     @ManyToOne
     @JoinColumn(name="contract_id", nullable=false)
     private Contract contract;

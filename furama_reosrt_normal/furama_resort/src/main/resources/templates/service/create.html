@@ -9,7 +9,7 @@
 <body>
 <nav th:replace="~{layout::nav}"></nav>
 <div style="height: 30px"></div>
-<div class="row">
+<div class="rowInput">
     <div id="form" class="col-7">
         <form th:action="@{/service/save}" th:object="${object}"
               method="POST" novalidate="novalidate" class="form">
@@ -89,7 +89,7 @@
             </select>
             <p th:if="${#fields.hasErrors('rentType')}" th:errors="*{rentType}"></p>
 
-            <input type="submit" class="save-pro btn btn-secondary" id="kich" value="Save Customer"/>
+            <input type="submit" class="save-pro btn btn-secondary" id="kich" value="Save Service"/>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </form>
     </div>

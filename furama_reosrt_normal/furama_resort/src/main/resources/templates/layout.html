@@ -84,8 +84,8 @@
              <span sec:authentication="name"></span>
 <!--              [ <span sec:authentication="principal.authorities" style="color: yellow; text-shadow: black">NOT FOUND</span>]-->
             </div>
-            <div class="h-100 d-flex align-items-center mr-3" sec:authorize="!isAuthenticated()">
-                <div class="dropdown">
+            <div class="h-100 d-flex align-items-center mr-3" sec:authorize="!isAuthenticated()" st>
+                <div class="dropdown" >
                     <div>
                         <!--                                        <i class="fas fa-ellipsis-h mr-1" style="font-size: 25px;"></i>-->
                         <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown"
@@ -93,7 +93,7 @@
                             <span class="caret" style="font-size: 16px; color: white; "></span>
                         </button>
                         <ul *ngIf="!user" class="dropdown-menu "
-                            style="background-color: #fc9807; width: 100%;">
+                            style="background-color: #fc9807; width: 100%;top: 36px;left: -86px;" >
                             <li class="text-center">
                                 <i class="fa fa-user-circle mr-1" aria-hidden="true"
                                    style="color: white;"></i>

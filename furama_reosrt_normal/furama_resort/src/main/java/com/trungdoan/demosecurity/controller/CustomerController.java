@@ -32,7 +32,7 @@ public class CustomerController {
 
 
     @GetMapping("/customer/customer")
-    public ModelAndView getIndex(@PageableDefault(value = 8) Pageable pageable) {
+    public ModelAndView getIndex(@PageableDefault(value = 5) Pageable pageable) {
         ModelAndView modelAndView = new ModelAndView("/customer/customer");
         Page<Customer> list =  customerService.findAll(pageable);
         if (list==null) {
@@ -45,7 +45,12 @@ public class CustomerController {
 
     @GetMapping("customer/edit/{id}")
     public String editObject(@PathVariable Long id, Model model) {
-        model.addAttribute("object", customerService.findById(id).get());
+        Customer customer = customerService.findById(id).orElse(null);
+        if (customer == null) {
+            return "/authentication/error";
+        }
+
+        model.addAttribute("object",customer);
         return "customer/update";
     }
 
@@ -88,7 +93,7 @@ public class CustomerController {
                          @RequestParam(value = "address", defaultValue = "") String address,
                          @RequestParam(value = "customerType", defaultValue = "") String customerType,
 
-                         @PageableDefault(value = 8) Pageable pageable,
+                         @PageableDefault(value = 5) Pageable pageable,
                          Model model) {
 
             model.addAttribute("list", customerService.search3(customerName, address, customerType,pageable));

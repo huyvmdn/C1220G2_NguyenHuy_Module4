@@ -3,14 +3,14 @@
 <head th:replace="~{layout/header::header}"></head>
 
 
-<body >
+<body>
 <nav th:replace="~{layout::nav}"></nav>
 <div style="height: 30px"></div>
 <div class="row " style="margin-right: 15px; height: 700px">
     <div class="col-2 bg-light">
         <hr style="background-color: white">
-        <a style="text-align:center"  th:href="@{/contractDetail/create/__${object.id}__ }"
-           th:text="#{create.contract}"></a>
+        <a style="text-align:center" th:href="@{/contractDetail/create/__${object.id}__ }"
+           th:text="">Create ContractDetail</a>
         <hr>
         <p style="text-align: center;">Item 2</p>
         <hr style="background-color: white">
@@ -18,19 +18,17 @@
     </div>
     <div class="col-10 bg-light">
         <!--        <h2 th:text="${mess}" style="color:white;"></h2>-->
-        CUSTOMER
+        CONTRACT
         <table id="table" class="table table-striped table-bordered bg-light container ">
             <thead>
             <tr>
                 <th> Id</th>
-                <th> Code</th>
-                <th> Name</th>
-                <th> gender</th>
-                <th> idCard</th>
-                <th> phone</th>
-                <th> email</th>
-                <th> address</th>
-                <th> customerType</th>
+                <th> startDate</th>
+                <th> endDate</th>
+                <th> deposit</th>
+                <th> totalMoney</th>
+                <th> employee</th>
+                <th> customer</th>
                 <th>action</th>
             </tr>
             </thead>
@@ -44,22 +42,27 @@
                 <td th:text="${object.employee.name}"></td>
                 <td th:text="${object.customer.name}"></td>
 
-                <td ><a class="btn btn-warning" th:href="@{/contract/view/__${object.id}__ }">Show contract</a></td>
-                <td><a class="btn btn-warning" th:href="@{/contractDetail/view/__${object.getId()}__ }">contract Detail</a>
-                <td><a class="btn btn-warning" th:href="@{/contract/edit/__${object.getId()}__ }">Edit</a>
-                    <a  href="#" data-toggle="modal"  sec:authorize="hasRole('ADMIN')" data-target="#xoa" class="btn btn-danger"
-                        th:onclick="'setIdDeleteToForm(\'' + ${object.id} + '\');'"> Xóa </a>
+                <td><a class="btn btn-warning" th:href="@{/contract/view/__${object.id}__ }">Show contract</a>
+                    <a class="btn btn-warning" th:href="@{/contractDetail/view/__${object.getId()}__ }">contract
+                        Detail</a>
+                    <a class="btn btn-warning" th:href="@{/contract/edit/__${object.getId()}__ }">Edit</a>
+                    <a href="#" data-toggle="modal" sec:authorize="hasRole('ADMIN')" data-target="#xoa"
+                       class="btn btn-danger"
+                       th:onclick="'setIdDeleteToForm(\'' + ${object.id} + '\');'"> Xóa </a>
                 </td>
             </tr>
             </tbody>
         </table>
         <div style="height: 50px"></div>
-        CONTRACT
+        CONTRACT DETAIL
         <table class="table table-striped table-bordered bg-light container ">
             <thead>
             <tr>
                 <th> Id</th>
                 <th> attachService</th>
+                <th> Cost</th>
+                <th> status</th>
+                <th> unit</th>
                 <th> contract</th>
                 <th> quatity</th>
 
@@ -69,12 +72,16 @@
             <tbody>
             <tr th:each="row,rowStat : ${object.getContractDetails()}">
                 <td th:text="${row.id}"></td>
-                <td th:text="${row.attachService}"></td>
-                <td th:text="${row.contract}"></td>
+                <td th:text="${row.attachService.name}"></td>
+                <td th:text="${row.attachService.cost}"></td>
+                <td th:text="${row.attachService.status}"></td>
+                <td th:text="${row.attachService.unit}"></td>
+                <td th:text="${row.contract.id}"></td>
                 <td th:text="${row.quatity}"></td>
                 <td><a class="btn btn-warning" th:href="@{/contractDetail/edit/__${row.getId()}__ }">Edit</a>
-                    <a  href="#" data-toggle="modal"  sec:authorize="hasRole('ADMIN')" data-target="#xoa" class="btn btn-danger"
-                        th:onclick="'setIdDeleteToForm(\'' + ${row.id} + '\');'"> Xóa </a>
+                    <a href="#" data-toggle="modal" sec:authorize="hasRole('ADMIN')" data-target="#xoa"
+                       class="btn btn-danger"
+                       th:onclick="'setIdDeleteToForm(\'' + ${row.id} + '\');'"> Xóa </a>
                 </td>
             </tr>
             </tbody>

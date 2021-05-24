@@ -1,8 +1,7 @@
 package com.trungdoan.demosecurity.controller;
 
-import com.trungdoan.demosecurity.model.entity.Contract;
-import com.trungdoan.demosecurity.model.entity.ContractDetail;
-import com.trungdoan.demosecurity.model.entity.Customer;
+import com.trungdoan.demosecurity.model.entity.*;
+import com.trungdoan.demosecurity.service.AttachServiceService;
 import com.trungdoan.demosecurity.service.ContractDetailService;
 import com.trungdoan.demosecurity.service.ContractService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,15 +24,26 @@ public class ContractDetailController {
     @Autowired
     private ContractDetailService contractDetailService;
 
+    @Autowired
+    private AttachServiceService attachServiceService;
+
+    @ModelAttribute("contracts")
+    public Iterable<Contract> contracts() {
+        return contractService.findAll();
+    }
+
+    @ModelAttribute("attachServices")
+    public Iterable<AttachService> attachServices() {
+        return attachServiceService.findAll();
+    }
+
     @GetMapping("/contractDetail/view/{id}")
     public String show(@PathVariable("id") Long id  , Model model) {
-        Contract contract = contractService.findById(id).get();
+        Contract contract = contractService.findById(id).orElse(null);
         if (contract == null) {
-            model.addAttribute("object", new ContractDetail());
-            return "/contractDetail/view";
+            return "authentication/error";
         }
-        model.addAttribute("object", new ContractDetail());
-        model.addAttribute("contract", contract);
+        model.addAttribute("object", contract);
         return "/contractDetail/view";
     }
 
@@ -73,4 +83,8 @@ public class ContractDetailController {
         return "redirect:/contract/contract" ;
     }
 
+    @GetMapping("/test")
+    public String getTest() {
+        return "/test";
+    }
 }

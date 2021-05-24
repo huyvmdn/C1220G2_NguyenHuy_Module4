@@ -5,7 +5,7 @@
 <body >
 <nav th:replace="~{layout::nav}"></nav>
 <div style="height: 30px"></div>
-<div class="row " style="margin-right: 15px; height: 700px">
+<div class="row" style="margin-right: 15px; height: 700px">
     <div class="col-2 bg-light">
         <hr style="background-color: white">
         <a style="text-align:center"  th:href="@{/customer/create}"
@@ -14,7 +14,7 @@
         <a style="text-align:center"   th:href="@{/contract/create}"
            th:text="#{create.contract}"></a>
         <hr>
-        <p style="text-align: center;" class="searchCustomer">Search</p>
+        <p style="text-align: center;" class="searchAll">Search</p>
         <form th:action="@{/customer/search}" method="get" class="search-toggle form"  >
             tên:  <input type="text" class="form-control" name="customerName" th:value="${customerName}">
             địa chỉ:  <input type="text" class="form-control" name="address" th:value="${address}">
@@ -24,7 +24,7 @@
         </select>
             <input type="submit" class="button btn-light" value="search">
         </form>
-        <hr style="background-color: white">
+        <hr >
 
         <p style="text-align: center;">Item 3</p>
     </div>
@@ -66,13 +66,13 @@
             </tr>
             </tbody>
         </table>
-        <button stype="button" class="btn btn-outline-success my-2 my-sm-0" th:if="${list.hasPrevious()}"><a
-                th:href="@{'/search'(customerName=${customerName},address=${address},customerType=${customerType},page=${list.number - 1})}"
-        >Previous</a></button>
+        <a class="btn btn-outline-success my-2 my-sm-0" th:if="${list.hasPrevious()}"
+                th:href="@{'/customer/search'(customerName=${customerName},address=${address},customerType=${customerType},page=${list.number - 1})}"
+        >Previous</a>
         <span th:text="${list.number + 1}"></span>/<span th:text="${list.totalPages}"></span>
-        <button type="button" class="btn btn-outline-success my-2 my-sm-0" th:if="${list.hasNext()}"><a
-                th:href="@{'/search'(customerName=${customerName},address=${address},customerType=${customerType},page=${list.number + 1})}"
-        >Next</a></button>
+       <a th:if="${list.hasNext()}" class="btn btn-outline-success my-2 my-sm-0"
+                th:href="@{'/customer/search'(customerName=${customerName},address=${address},customerType=${customerType},page=${list.number + 1})}"
+        >Next</a>
     </div>
 
 </div>
@@ -82,58 +82,7 @@
 <div th:replace="layout::xoaModal('/customer/delete')"></div>
 
 
-<script>
 
-
-    $(document).ready(function () {
-        $('.searchCustomer').click(function () {
-            $('.search-toggle').toggle()
-
-        })
-    })
-    // function openModal(flag) {
-    //     console.log(flag)
-    //     if (flag!== 'null') {
-    //         $.ajax({
-    //             type: "GET",
-    //             //tên API
-    //             url: `/customer/create`,
-    //             dataType: "HTML",
-    //             success: function (data) {
-    //                 console.log(data)
-    //                 $('.modal-body').html(data)
-    //                 $('.modal-title').html('create')
-    //                 $('#modal-test').modal('show')
-    //             }
-    //         })
-    //
-    //         // $('#modal-test').modal('show');
-    //     }
-    // }
-    //
-    // $(document).ready(function () {
-    //     $('.create-pro').click(function (event) {
-    //         //lay du lieu
-    //         let a = $(this);
-    //         let andressController = a.attr('href');
-    //         let name = a.data('name')
-    //         console.log(andressController);
-    //         // goi ajax
-    //         $.ajax({
-    //             type: "GET",
-    //             //tên API
-    //             url: `${andressController}`,
-    //             dataType: "HTML",
-    //             success: function (data) {
-    //                 $('.modal-body').html(data)
-    //                 $('.modal-title').html(name)
-    //                 $('#modal-test').modal('show')
-    //             }
-    //         })
-    //
-    //     })
-    // })
-</script>
 
 <footer th:replace="~{layout/footer :: footer}"></footer>
 </body>

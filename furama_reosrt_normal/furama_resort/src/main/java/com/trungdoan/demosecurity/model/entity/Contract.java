@@ -51,5 +51,23 @@ public class Contract {
     @OneToMany(mappedBy = "contract", cascade = CascadeType.ALL)
     private List<ContractDetail> contractDetails;
 
+    public Contract(@NotBlank String startDate, String endDate, @Min(value = 0) Double deposit, @Min(value = 0) Double totalMoney, Employee employee, Customer customer, List<ContractDetail> contractDetails) {
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.deposit = deposit;
+        this.totalMoney = totalMoney;
+        this.employee = employee;
+        this.customer = customer;
+        this.contractDetails = contractDetails;
+    }
+
+    public Contract(@NotBlank String startDate, String endDate, @Min(value = 0) Double deposit, @Min(value = 0) Double totalMoney, Employee employee, Customer customer) {
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.deposit = deposit;
+        this.totalMoney = totalMoney;
+        this.employee = employee;
+        this.customer = customer;
+    }
 
 }
