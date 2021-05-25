@@ -16,8 +16,9 @@
             <div>
                 Customer:
                 <select th:field="*{customer}">
-                    <option  th:if="${customer}"  th:value="customer.id" th:text="${customer.code}"></option>
-                    <option th:each="c : ${customers}" th:value="${c.id}" th:text="${c.code}"></option>
+                    <option th:each="c : ${customers}" th:value="${c.id}"  th:selected="${c.id == customerById}">
+                      name  <span th:text="${c.name}" ></span> [ <span th:text="${c.code}" ></span>] <span th:text="${c.customerType.name}" ></span>
+                    </option>
                 </select>
             </div>
 
@@ -43,6 +44,12 @@
                 <p th:if="${#fields.hasErrors('deposit')}" th:errors="*{deposit}"></p>
             </div>
 
+            <div>
+                Service:
+                <select th:field="*{entityService}">
+                    <option th:each="c : ${entityServices}" th:value="${c.id}" th:text="${c.code}"></option>
+                </select>
+            </div>
             <div>
                 <label>totalMoney</label>
                 <div class="form-group green-border-focus">

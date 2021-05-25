@@ -25,7 +25,7 @@ public class AttachService {
     private Long id;
     private String name;
     @Min(value = 0)
-    @NumberFormat(style = NumberFormat.Style.PERCENT)
+    @NumberFormat(style = NumberFormat.Style.NUMBER)
     private double cost;
     @Min(value = 0)
     @NumberFormat(style = NumberFormat.Style.NUMBER)

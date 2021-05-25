@@ -33,6 +33,7 @@ public class Employee {
     private String name;
     @NotBlank
     @Column(columnDefinition = "date")
+    @Pattern(regexp = "^([12][09][0-9]{2}/[01][0-9]/[0123][0-9])$", message = "dd/mm/yyyy and 1900 - 2099")
     private String birthday;
     @NotBlank
     @Pattern(regexp = "^([0-9]{9}|[0-9]{12})$", message = "9 số hoặc 12 số (X là số từ 0-9)")

@@ -60,13 +60,13 @@
             </tr>
             </tbody>
         </table>
-<!--        <button stype="button" class="btn btn-outline-success my-2 my-sm-0" th:if="${list.hasPrevious()}"><a-->
-<!--                th:href="@{'/search'(name=${name},page=${list.number - 1})}"-->
-<!--        >Previous</a></button>-->
-<!--        <span th:text="${list.number + 1}"></span>/<span th:text="${list.totalPages}"></span>-->
-<!--        <button type="button" class="btn btn-outline-success my-2 my-sm-0" th:if="${list.hasNext()}"><a-->
-<!--                th:href="@{'/search'(name=${name},page=${list.number + 1})}"-->
-<!--        >Next</a></button>-->
+        <button stype="button" class="btn btn-outline-success my-2 my-sm-0" th:if="${list.hasPrevious()}"><a
+                th:href="@{'/search'(name=${name},page=${list.number - 1})}"
+        >Previous</a></button>
+        <span th:text="${list.number + 1}"></span>/<span th:text="${list.totalPages}"></span>
+        <button type="button" class="btn btn-outline-success my-2 my-sm-0" th:if="${list.hasNext()}"><a
+                th:href="@{'/search'(name=${name},page=${list.number + 1})}"
+        >Next</a></button>
 
     </div>
 </div>

@@ -11,6 +11,7 @@ import org.springframework.format.annotation.NumberFormat;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -28,8 +29,9 @@ public class Contract {
     private Long id;
     @NotBlank
     @Column(columnDefinition = "date")
+    @Pattern(regexp = "^([12][09][0-9]{2}/[01][0-9]/[0123][0-9])$", message = "dd/mm/yyyy and 1900 - 2099")
     private String startDate;
-
+    @Pattern(regexp = "^([12][09][0-9]{2}/[01][0-9]/[0123][0-9])$", message = "dd/mm/yyyy and 1900 - 2099")
     @Column(columnDefinition = "date")
     private String endDate;
     @Min(value = 0)
@@ -46,6 +48,10 @@ public class Contract {
     @ManyToOne
     @JoinColumn(name="customer_id", nullable=false)
     private Customer customer;
+
+    @ManyToOne
+    @JoinColumn(name="entityService_id", nullable=false)
+    private EntityService entityService;
 
 
     @OneToMany(mappedBy = "contract", cascade = CascadeType.ALL)
@@ -69,5 +75,16 @@ public class Contract {
         this.employee = employee;
         this.customer = customer;
     }
+
+    public Contract(@NotBlank String startDate, String endDate, @Min(value = 0) Double deposit, @Min(value = 0) Double totalMoney, Employee employee, Customer customer, EntityService entityService) {
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.deposit = deposit;
+        this.totalMoney = totalMoney;
+        this.employee = employee;
+        this.customer = customer;
+        this.entityService = entityService;
+    }
+
 
 }

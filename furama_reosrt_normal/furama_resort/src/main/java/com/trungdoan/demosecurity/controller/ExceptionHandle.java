@@ -8,7 +8,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class ExceptionHandle {
 
     @ExceptionHandler(Exception.class)
-    public ModelAndView showPageError() {
-return new ModelAndView("/authentication/error");
+    public ModelAndView showPageError(Exception e) {
+        System.err.println(e.getMessage());
+        return new ModelAndView("/authentication/error","mess",e.getMessage());
     }
 }

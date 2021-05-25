@@ -8,7 +8,7 @@ import java.util.List;
 
 @Component
 public interface ReadAndWrite<T> {
-    public static final String PATH = "C:\\Users\\Administrator\\Desktop\\module_4\\C1220G2_NguyenHuy_Module4\\_09_AOP\\bai_tap\\quan_ly_sach\\src\\main\\resources\\static\\whiteLog\\";
+    public static final String PATH = "C:\\Users\\Administrator\\Desktop\\module_4\\C1220G2_NguyenHuy_Module04\\furama_reosrt_normal\\furama_resort\\src\\main\\resources\\ghiLog\\";
 
     static <T> void writeFileList(String fileName, List<T> list, boolean writeMode) {
         File file = new File(PATH + fileName);

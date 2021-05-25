@@ -1,5 +1,7 @@
 package com.trungdoan.demosecurity.controller;
 
+import com.trungdoan.demosecurity.dto.CustomerDTO;
+import com.trungdoan.demosecurity.dto.Mapping;
 import com.trungdoan.demosecurity.model.entity.Customer;
 import com.trungdoan.demosecurity.model.entity.CustomerType;
 import com.trungdoan.demosecurity.service.CustomerService;
@@ -55,11 +57,12 @@ public class CustomerController {
     }
 
     @PostMapping("customer/update")
-    public String updateObject(@Valid  @ModelAttribute("object") Customer object, BindingResult bindingResult, RedirectAttributes redirect) {
+    public String updateObject(@Valid  @ModelAttribute("object") CustomerDTO object, BindingResult bindingResult, RedirectAttributes redirect) {
         if (bindingResult.hasFieldErrors()) {
             return "/customer/update";
         }
-        customerService.save(object);
+        Customer customer= Mapping.dtoToCustomer(object);
+        customerService.save(customer);
         redirect.addFlashAttribute("mess", object.getId()+"updated successfully");
         return "redirect:/customer/customer";
     }

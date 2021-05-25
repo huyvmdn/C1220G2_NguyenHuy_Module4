@@ -67,6 +67,7 @@
                 <th> totalMoney</th>
                 <th> employee</th>
                 <th> customer</th>
+                <th> entityService</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -79,10 +80,11 @@
                 <td th:text="${row.totalMoney}"></td>
                 <td th:text="${row.employee.name}"></td>
                 <td th:text="${row.customer.name}"></td>
+                <td th:text="${row.entityService.name}"></td>
 
-                <td ><a class="btn btn-warning" th:href="@{/contract/view/__${row.getId()}__ }">Show contract</a></td>
-                <td><a class="btn btn-warning" th:href="@{/contractDetail/view/__${row.getId()}__ }">contract Detail</a>
-                <td><a class="btn btn-warning" th:href="@{/contract/edit/__${row.getId()}__ }">Edit</a>
+                <td >
+                <a class="btn btn-warning" th:href="@{/contractDetail/view/__${row.getId()}__ }">contract Detail</a>
+                <a class="btn btn-warning" th:href="@{/contract/edit/__${row.getId()}__ }">Edit</a>
                     <a  href="#" data-toggle="modal"  sec:authorize="hasRole('ADMIN')" data-target="#xoa" class="btn btn-danger"
                        th:onclick="'setIdDeleteToForm(\'' + ${row.id} + '\');'"> Xóa </a>
                 </td>

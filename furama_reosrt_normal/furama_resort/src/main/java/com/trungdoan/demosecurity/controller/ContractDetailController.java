@@ -83,8 +83,27 @@ public class ContractDetailController {
         return "redirect:/contract/contract" ;
     }
 
-    @GetMapping("/test")
-    public String getTest() {
-        return "/test";
+
+
+    @GetMapping("contractDetail/edit/{id}")
+    public String editObject(@PathVariable Long id, Model model) {
+         ContractDetail contractDetail=  contractDetailService.findById(id).orElse(null);
+        if (contractDetail==null) {
+            model.addAttribute("mess", "đối tượng có id "+ id + "null");
+            return "/authentication/error";
+        }
+        model.addAttribute("object", contractDetail);
+        return "contract/update";
     }
+
+    @PostMapping("contractDetail/update")
+    public String updateObject(@Valid  @ModelAttribute("object") ContractDetail object, BindingResult bindingResult, RedirectAttributes redirect) {
+        if (bindingResult.hasFieldErrors()) {
+            return "/contractDetail/update";
+        }
+        contractDetailService.save(object);
+        redirect.addFlashAttribute("mess", object.getId()+"updated successfully");
+        return "redirect:/contractDetail/contract";
+    }
+
 }

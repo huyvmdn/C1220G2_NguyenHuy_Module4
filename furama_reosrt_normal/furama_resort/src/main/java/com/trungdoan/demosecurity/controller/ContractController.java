@@ -7,6 +7,7 @@ import com.trungdoan.demosecurity.model.entity.*;
 import com.trungdoan.demosecurity.service.ContractService;
 import com.trungdoan.demosecurity.service.CustomerService;
 import com.trungdoan.demosecurity.service.EmployeeService;
+import com.trungdoan.demosecurity.service.ServiceService;
 import com.trungdoan.demosecurity.ultil.EncrypPasswordUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -22,7 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
-import java.util.HashSet;
+
 
 @Controller
 public class ContractController {
@@ -36,6 +37,9 @@ public class ContractController {
     @Autowired
     private CustomerService customerService;
 
+    @Autowired
+    private ServiceService serviceService;
+
     @ModelAttribute("employees")
     public Iterable<Employee> employees() {
         return employeeService.findAll();
@@ -46,22 +50,22 @@ public class ContractController {
         return customerService.findAll();
     }
 
-
-    @GetMapping("contract/create" )
-    public String create(Model model) {
-        model.addAttribute("object", new Contract());
-        return "/contract/create";
+    @ModelAttribute("entityServices")
+    public Iterable<EntityService> entityServices() {
+        return serviceService.findAll();
     }
 
+
+
     @GetMapping("contract/create/{id}" )
-    public String create(@ModelAttribute("id")Long  id,Model model) {
+    public String create(@ModelAttribute("id")Long  id ,Model model) {
         Customer customer = customerService.findById(id).get();
          if (customer == null) {
              model.addAttribute("object",new Contract());
              return "/contract/create";
          }
         model.addAttribute("object",new Contract());
-         model.addAttribute("customer",customer);
+         model.addAttribute("customerById",id);
         return "/contract/create";
     }
 

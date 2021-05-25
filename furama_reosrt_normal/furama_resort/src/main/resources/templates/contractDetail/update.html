@@ -11,8 +11,12 @@
 <div style="height: 30px"></div>
 <div class="row">
     <div id="form" class="col-7">
-        <form th:action="@{/contractDetail/save}" th:object="${object}"
+        <form th:action="@{/contractDetail/update}" th:object="${object}"
               method="POST" novalidate="novalidate" class="form">
+
+            <div class="form-group green-border-focus">
+                <input type="hidden" class="form-control" th:field="*{id}"/>
+            </div>
             <div>
                 <label>quatity</label>
                 <div class="form-group green-border-focus">
@@ -24,7 +28,7 @@
                 contract
                 <select th:field="*{contract}">
                     <option th:each="c : ${contracts}" th:value="${c.id}" th:selected="${contract.id == c.id}">
-                       Service: <span th:text="${c.entityService.name}"></span> id contract <span th:text="${c.id}"></span>
+                        Service: <span th:text="${c.entityService.name}"></span> id contract <span th:text="${c.id}"></span>
                         employee create contract <span th:text="${c.employee.name}"></span>
                     </option>
                 </select>

@@ -37,8 +37,7 @@
             <div>
                 <label>salary</label>
                 <div class="form-group green-border-focus">
-                    <input type="text" class="form-control"th:field='${object.salary}'/> Male?
-                </div>
+                    <input type="text" class="form-control"th:field='${object.salary}'/>
                 <p th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}"></p>
             </div>
 

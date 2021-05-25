@@ -1,6 +1,8 @@
 package com.trungdoan.demosecurity.controller;
 
 
+import com.trungdoan.demosecurity.dto.EmployeeDTO;
+import com.trungdoan.demosecurity.dto.Mapping;
 import com.trungdoan.demosecurity.model.Role;
 import com.trungdoan.demosecurity.model.User;
 import com.trungdoan.demosecurity.model.entity.*;
@@ -69,20 +71,34 @@ public class EmployeeController {
         return modelAndView;
     }
 
-    @GetMapping("employee/edit/{id}")
+    @GetMapping("/employee/edit/{id}")
     public String editObject(@PathVariable Long id, Model model) {
         model.addAttribute("object", employeeService.findById(id).get());
-        return "employee/update";
+        return "/employee/update";
     }
 
 
-
-    @PostMapping("employee/update")
-    public String updateObject(@Valid @ModelAttribute("object") Employee object, BindingResult bindingResult, RedirectAttributes redirect) {
+    @PostMapping("/employee/update")
+    public String update(@Valid @ModelAttribute("object") EmployeeDTO object, BindingResult bindingResult, RedirectAttributes redirect) {
         if (bindingResult.hasFieldErrors()) {
             return "/employee/update";
         }
-        employeeService.save(object);
+        String role ;
+        if ( "Director".equals(object.getPosition().getName()) || "Manager".equals(object.getPosition().getName()) ) {
+            role= "ROLE_ADMIN";
+        } else {
+            role="ROLE_MEMBER";
+        }
+        Employee employee= Mapping.dtoToEmployee(object);
+        User user = new User();
+        user.setEmail(employee.getEmail());
+        user.setPassword(EncrypPasswordUtils.EncrypPasswordUtils("123456"));
+        HashSet<Role> roles = new HashSet<>();
+        roles.add(roleService.findByName(role));
+        user.setRoles(roles);
+        userService.save(user);
+        employee.setUser(user);
+        employeeService.save(employee);
         redirect.addFlashAttribute("mess", object.getId()+"updated successfully");
         return "redirect:/employee/employee";
     }
@@ -100,11 +116,17 @@ public class EmployeeController {
         if (bindingResult.hasFieldErrors()) {
             return "/employee/create";
         }
+            String role ;
+        if ( "Director".equals(object.getPosition().getName()) || "Manager".equals(object.getPosition().getName()) ) {
+            role= "ROLE_ADMIN";
+        } else {
+            role="ROLE_MEMBER";
+        }
         User user = new User();
         user.setEmail(object.getEmail());
         user.setPassword(EncrypPasswordUtils.EncrypPasswordUtils("123456"));
         HashSet<Role> roles = new HashSet<>();
-        roles.add(roleService.findByName("ROLE_MEMBER"));
+        roles.add(roleService.findByName(role));
         user.setRoles(roles);
         userService.save(user);
         object.setUser(user);

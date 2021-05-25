@@ -33,6 +33,7 @@ public class Customer {
     private String name;
     @NotBlank
     @Column(columnDefinition = "date")
+    @Pattern(regexp = "^([12][09][0-9]{2}/[01][0-9]/[0123][0-9])$", message = "dd/mm/yyyy and 1900 - 2099")
     private String birthday;
     @NotNull
     @Column(columnDefinition = "Boolean")
@@ -63,6 +64,18 @@ public class Customer {
         this.idCard = idCard;
         this.phone = phone;
         this.email = email;
+        this.address = address;
+        this.customerType = customerType;
+    }
+
+    public Customer(Long id, @NotBlank @Pattern(regexp = "^KH-[0-9]{4}$", message = "KH-XXXX (X là số từ 0-9)") String code, @NotBlank String name, @NotBlank String birthday, @NotNull boolean gender, @NotBlank @Pattern(regexp = "^([0-9]{9}|[0-9]{12})$", message = "9 số hoặc 12 số (X là số từ 0-9)") String idCard, @NotBlank @Pattern(regexp = "^(090|091|\\(84\\)\\+90|\\(84\\)\\+91)[0-9]{7}$", message = "Số điện thoại phải đúng định dạng 090xxxxxxx hoặc 091xxxxxxx hoặc (84)+90xxxxxxx hoặc (84)+91xxxxxxx") String phone, String address, CustomerType customerType) {
+        this.id = id;
+        this.code = code;
+        this.name = name;
+        this.birthday = birthday;
+        this.gender = gender;
+        this.idCard = idCard;
+        this.phone = phone;
         this.address = address;
         this.customerType = customerType;
     }

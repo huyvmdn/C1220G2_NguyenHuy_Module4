@@ -11,8 +11,8 @@
         <a style="text-align:center"  th:href="@{/customer/create}"
            th:text="#{create.customer}"></a>
         <hr>
-        <a style="text-align:center"  th:href="@{/contract/create}"
-           th:text="#{create.contract}"></a>
+<!--        <a style="text-align:center"  th:href="@{/contract/create}"-->
+<!--           th:text="#{create.contract}"></a>-->
         <hr>
         <p style="text-align: center;" class="searchCustomer">Search</p>
         <form th:action="@{/customer/search}" method="get" class="search-toggle form"  >
@@ -51,8 +51,10 @@
                 <td th:text="${row.endDate}"></td>
                 <td th:text="${row.customer.name} "></td>
                 <td th:text="${row.employee.name}"></td>
+                <td th:text="${row.entityService.name}"></td>
                 <td th:text="${row.deposit}"></td>
                 <td th:text="${row.totalMoney}"></td>
+
                 <td><a class="btn btn-primary" style="background-color:  #e3f2fd;color: black" th:href="@{/contractDetail/view/__${row.getId()}__ }">Show contractDetail</a></td>
                 <td><a class="btn btn-primary" style="background-color:  #e3f2fd;color: black" th:href="@{/contractDetail/create/__${row.getId()}__ }">Create contractDetail</a></td>
                 <td><a class="btn btn-primary" style="background-color:  #e3f2fd;color: black" th:href="@{/contract/edit/__${row.getId()}__ }">Edit</a>
@@ -62,13 +64,13 @@
             </tr>
             </tbody>
         </table>
-<!--        <button stype="button" class="btn btn-outline-success my-2 my-sm-0" th:if="${list.hasPrevious()}"><a-->
-<!--                th:href="@{'/search'(customerName=${customerName},address=${address},customerType=${customerType},page=${list.number - 1})}"-->
-<!--        >Previous</a></button>-->
-<!--        <span th:text="${list.number + 1}"></span>/<span th:text="${list.totalPages}"></span>-->
-<!--        <button type="button" class="btn btn-outline-success my-2 my-sm-0" th:if="${list.hasNext()}"><a-->
-<!--                th:href="@{'/search'(customerName=${customerName},address=${address},customerType=${customerType},page=${list.number + 1})}"-->
-<!--        >Next</a></button>-->
+        <button stype="button" class="btn btn-outline-success my-2 my-sm-0" th:if="${list.hasPrevious()}"><a
+                th:href="@{'/contract/contract'(page=${list.number - 1})}"
+        >Previous</a></button>
+        <span th:text="${list.number + 1}"></span>/<span th:text="${list.totalPages}"></span>
+        <button type="button" class="btn btn-outline-success my-2 my-sm-0" th:if="${list.hasNext()}"><a
+                th:href="@{'/contract/contract'(page=${list.number + 1})}"
+        >Next</a></button>
     </div>
 
 </div>

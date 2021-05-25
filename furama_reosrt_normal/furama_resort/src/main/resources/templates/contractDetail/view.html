@@ -10,7 +10,7 @@
     <div class="col-2 bg-light">
         <hr style="background-color: white">
         <a style="text-align:center" th:href="@{/contractDetail/create/__${object.id}__ }"
-           th:text="">Create ContractDetail</a>
+        >Create ContractDetail</a>
         <hr>
         <p style="text-align: center;">Item 2</p>
         <hr style="background-color: white">
@@ -29,6 +29,7 @@
                 <th> totalMoney</th>
                 <th> employee</th>
                 <th> customer</th>
+                <th> entityService</th>
                 <th>action</th>
             </tr>
             </thead>
@@ -41,8 +42,9 @@
                 <td th:text="${object.totalMoney}"></td>
                 <td th:text="${object.employee.name}"></td>
                 <td th:text="${object.customer.name}"></td>
+                <td th:text="${object.entityService.name}"></td>
 
-                <td><a class="btn btn-warning" th:href="@{/contract/view/__${object.id}__ }">Show contract</a>
+                <td>
                     <a class="btn btn-warning" th:href="@{/contractDetail/view/__${object.getId()}__ }">contract
                         Detail</a>
                     <a class="btn btn-warning" th:href="@{/contract/edit/__${object.getId()}__ }">Edit</a>
@@ -86,14 +88,6 @@
             </tr>
             </tbody>
         </table>
-        <!--        <button stype="button" class="btn btn-outline-success my-2 my-sm-0" th:if="${list.hasPrevious()}"><a-->
-        <!--                th:href="@{'/search'(customerName=${customerName},address=${address},customerType=${customerType},page=${list.number - 1})}"-->
-        <!--        >Previous</a></button>-->
-        <!--        <span th:text="${list.number + 1}"></span>/<span th:text="${list.totalPages}"></span>-->
-        <!--        <button type="button" class="btn btn-outline-success my-2 my-sm-0" th:if="${list.hasNext()}"><a-->
-        <!--                th:href="@{'/search'(customerName=${customerName},address=${address},customerType=${customerType},page=${list.number + 1})}"-->
-        <!--        >Next</a></button>-->
-
     </div>
 </div>
 
