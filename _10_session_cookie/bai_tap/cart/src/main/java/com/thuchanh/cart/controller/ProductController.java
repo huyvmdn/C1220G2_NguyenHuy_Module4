@@ -39,7 +39,7 @@ public class ProductController {
         return "/product/view";
     }
 @PostMapping("/save")
-    public String save(@RequestParam("id") Long id,@RequestParam("amount") int amount, @ModelAttribute("cart") Cart cart,Model model) {
+    public String save(@RequestParam("id") Long id,@RequestParam("amount") int amount, @SessionAttribute("cart") Cart cart,Model model) {
                   Product product= productService.findById(id).get();
             product.setAmount(amount);
             productService.save(product);

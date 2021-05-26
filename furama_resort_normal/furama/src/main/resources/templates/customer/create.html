@@ -18,7 +18,7 @@
                 <div class="form-group green-border-focus">
                     <input type="text" class="form-control" th:field="*{code}"/>
                 </div>
-                <p th:if="${#fields.hasErrors('id')}" th:errors="*{code}"></p>
+                <p th:if="${#fields.hasErrors('code')}" th:errors="*{code}"></p>
             </div>
             <div>
                 <label>Name</label>

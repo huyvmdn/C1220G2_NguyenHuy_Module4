@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/header::header}">
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<nav th:replace="~{layout::nav}"></nav>
+<div style="height: 100px"></div>
+
+<div th:replace="~{home::body-layout}"></div>
+<!--<aside class="d-flex justify-content-center align-items-center">-->
+<!--    <div class="row">-->
+<!--        <div class="col-12">-->
+<!--            <h3>Đây là trang chủ</h3>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--</aside> &lt;!&ndash; col.// &ndash;&gt;-->
+<div style="height: 100px"></div>
+
+
+<footer th:replace="~{layout/footer :: footer}"></footer>
+</body>
+</html>

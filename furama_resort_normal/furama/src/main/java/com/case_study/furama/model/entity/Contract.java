@@ -28,9 +28,9 @@ public class Contract {
     private Long id;
     @NotBlank
     @Column(columnDefinition = "date")
-    @Pattern(regexp = "^([12][09][0-9]{2}/[01][0-9]/[0123][0-9])$", message = "dd/mm/yyyy and 1900 - 2099")
+    @Pattern(regexp = "^([12][09][0-9]{2}-[01][0-9]-[0123][0-9])$", message = "dd/mm/yyyy ")
     private String startDate;
-    @Pattern(regexp = "^([12][09][0-9]{2}/[01][0-9]/[0123][0-9])$", message = "dd/mm/yyyy and 1900 - 2099")
+    @Pattern(regexp = "^([12][09][0-9]{2}-[01][0-9]-[0123][0-9])$", message = "dd/mm/yyyy ")
     @Column(columnDefinition = "date")
     private String endDate;
     @Min(value = 0)

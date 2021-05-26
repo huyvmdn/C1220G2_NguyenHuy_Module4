@@ -1,17 +1,14 @@
-package com.case_study.furama.controller;
+package com.testfinal.module4.controller;
 
 
 
-import com.case_study.furama.dto.EmployeeDTO;
-import com.case_study.furama.dto.Mapping;
-import com.case_study.furama.model.Role;
-import com.case_study.furama.model.User;
-import com.case_study.furama.model.entity.Division;
-import com.case_study.furama.model.entity.EducationDegree;
-import com.case_study.furama.model.entity.Employee;
-import com.case_study.furama.model.entity.Position;
-import com.case_study.furama.service.*;
-import com.case_study.furama.ultil.EncrypPasswordUtils;
+import com.testfinal.module4.model.security.Role;
+import com.testfinal.module4.model.security.User;
+
+import com.testfinal.module4.model.entity.Employee;
+import com.testfinal.module4.model.entity.Position;
+import com.testfinal.module4.service.*;
+import com.testfinal.module4.ultil.EncrypPasswordUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -36,12 +33,6 @@ public class EmployeeController {
     private PositionService positionService;
 
     @Autowired
-    private DivisionService divisionService;
-
-    @Autowired
-    private EducationDegreesService educationDegreesService;
-
-    @Autowired
     private RoleService roleService;
 
     @Autowired
@@ -52,15 +43,6 @@ public class EmployeeController {
         return positionService.findAll();
     }
 
-    @ModelAttribute("educationDegrees")
-    public Iterable<EducationDegree> educationDegrees() {
-        return educationDegreesService.findAll();
-    }
-
-    @ModelAttribute("divisions")
-    public Iterable<Division> divisions() {
-        return divisionService.findAll();
-    }
 
 
 
@@ -83,32 +65,25 @@ public class EmployeeController {
 
 
     @PostMapping("/employee/update")
-    public String update(@Valid @ModelAttribute("object") EmployeeDTO object, BindingResult bindingResult, RedirectAttributes redirect) {
+    public String update(@Valid @ModelAttribute("object") Employee object, BindingResult bindingResult, RedirectAttributes redirect) {
         if (bindingResult.hasFieldErrors()) {
             return "/employee/update";
         }
         String role ;
-        String role2;
-        HashSet<Role> roles = new HashSet<>();
         if ( "Director".equals(object.getPosition().getName()) || "Manager".equals(object.getPosition().getName()) ) {
-            role= "ROLE_MEMBER";
-            role2="ROLE_ADMIN";
-            roles.add(roleService.findByName(role));
-            roles.add(roleService.findByName(role2));
+            role= "ROLE_ADMIN";
         } else {
             role="ROLE_MEMBER";
-            roles.add(roleService.findByName(role));
         }
-
-        Employee employee= Mapping.dtoToEmployee(object);
         User user = new User();
-        user.setEmail(employee.getEmail());
+        user.setEmail(object.getEmail());
         user.setPassword(EncrypPasswordUtils.EncrypPasswordUtils("123456"));
-
+        HashSet<Role> roles = new HashSet<>();
+        roles.add(roleService.findByName(role));
         user.setRoles(roles);
         userService.save(user);
-        employee.setUser(user);
-        employeeService.save(employee);
+        object.setUser(user);
+        employeeService.save(object);
         redirect.addFlashAttribute("mess", object.getId()+"updated successfully");
         return "redirect:/employee/employee";
     }
@@ -127,21 +102,16 @@ public class EmployeeController {
             return "/employee/create";
         }
             String role ;
-            String role2;
-        HashSet<Role> roles = new HashSet<>();
         if ( "Director".equals(object.getPosition().getName()) || "Manager".equals(object.getPosition().getName()) ) {
-            role= "ROLE_MEMBER";
-            role2="ROLE_ADMIN";
-            roles.add(roleService.findByName(role));
-            roles.add(roleService.findByName(role2));
+            role= "ROLE_ADMIN";
         } else {
             role="ROLE_MEMBER";
-            roles.add(roleService.findByName(role));
         }
         User user = new User();
         user.setEmail(object.getEmail());
         user.setPassword(EncrypPasswordUtils.EncrypPasswordUtils("123456"));
-
+        HashSet<Role> roles = new HashSet<>();
+        roles.add(roleService.findByName(role));
         user.setRoles(roles);
         userService.save(user);
         object.setUser(user);

@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
 <head th:fragment="head">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
-          crossorigin="anonymous">
+    <title>Furama Resort</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--        <link rel="shortcut icon" href="https://www.chotot.com/chotot-img/favicon.ico">-->
+    <script src="https://kit.fontawesome.com/6d7b60da21.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
     <style th:replace="~{css::style}"></style>
+    <script>
+        $(document).ready(function () {
+            $('.searchAll').click(function () {
+                $('.search-toggle').toggle()
+
+            })
+        })
+    </script>
 </head>
 <body>
 <div th:fragment="nav">
@@ -82,9 +93,9 @@
 
             <div class="h-100 d-flex align-items-center mr-3" sec:authorize="isAuthenticated()">
              <span sec:authentication="name"></span>
-<!--              [ <span sec:authentication="principal.authorities" style="color: yellow; text-shadow: black">NOT FOUND</span>]-->
+              [ <span sec:authentication="principal.authorities" style="color: yellow; text-shadow: black">NOT FOUND</span>]
             </div>
-            <div class="h-100 d-flex align-items-center mr-3" sec:authorize="!isAuthenticated()" st>
+            <div class="h-100 d-flex align-items-center mr-3" sec:authorize="!isAuthenticated()">
                 <div class="dropdown" >
                     <div>
                         <!--                                        <i class="fas fa-ellipsis-h mr-1" style="font-size: 25px;"></i>-->
@@ -102,7 +113,7 @@
 
                                 </a>
                             </li>
-                            <li class="text-center">
+                            <li class="text-center"  sec:authorize="hasRole('ADMIN')" >
                                 <i class="fa fa-sign-in mr-1" style="color: white;"
                                    aria-hidden="true"></i>
                                 <a th:href="@{/register}"
