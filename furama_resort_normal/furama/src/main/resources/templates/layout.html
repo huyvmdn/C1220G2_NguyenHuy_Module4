@@ -27,7 +27,7 @@
     top: 25px; font-size: xx-large;"> FURAMA RESORT </h1></div>
     <nav class="navbar navbar-expand-lg navbar-dark  w-100"
          style="color: black ;left: 0px; background-color: #e3f2fd;">
-        <a class="navbar-brand" th:href="@{/}" style="color: black" th:text="#{manager}"> </a>
+        <a class="navbar-brand btn btn-primary" th:href="@{/}" style="color: white" th:text="#{manager}"> </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -36,20 +36,20 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/customer/customer}" style="color: black" th:text="#{customer}"><span
+                    <a class="nav-link btn btn-primary" th:href="@{/customer/customer}" style="color: white" th:text="#{customer}"><span
                             class="sr-only">(current)</span></a>
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/service/service}" style="color: black" th:text="#{service}"><span
+                    <a class="nav-link btn btn-primary" th:href="@{/service/service}" style="color: white" th:text="#{service}"><span
                             class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/contract/contract}" style="color: black" th:text="#{contract}"><span
+                    <a class="nav-link btn btn-primary" th:href="@{/contract/contract}" style="color: white" th:text="#{contract}"><span
                             class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active" sec:authorize="hasRole('ADMIN')">
-                    <a class="nav-link" th:href="@{/employee/employee}" style="color: black" th:text="#{employee}"><span
+                    <a class="nav-link btn btn-primary" th:href="@{/employee/employee}" style="color: white" th:text="#{employee}"><span
                             class="sr-only">(current)</span></a>
                 </li>
             </ul>
@@ -68,17 +68,17 @@
             <!--                </a>-->
             <!--            </div>-->
 
-            <div class="d-flex" id="search">
-                <div class="input-group search-box">
-                    <div class="form-outline">
-                        <input type="text" placeholder="title blog" class="search-txt" aria-label="Search"
-                               id="name">
-                        <button id="search-button" type="submit" class="btn btn-primary">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
+<!--            <div class="d-flex" id="search">-->
+<!--                <div class="input-group search-box">-->
+<!--                    <div class="form-outline">-->
+<!--                        <input type="text" placeholder="title blog" class="search-txt" aria-label="Search"-->
+<!--                               id="name">-->
+<!--                        <button id="search-button" type="submit" class="btn btn-primary">-->
+<!--                            <i class="fas fa-search"></i>-->
+<!--                        </button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
             <div class="float-right" style="margin-bottom: 15px">
                 <a href="/lang?language=en" style="text-decoration: none">
                     <button class="btn btn-primary" style="top: 7px;position: relative;margin-left: 11px;">English
@@ -93,7 +93,7 @@
 
             <div class="h-100 d-flex align-items-center mr-3" sec:authorize="isAuthenticated()">
              <span sec:authentication="name"></span>
-              [ <span sec:authentication="principal.authorities" style="color: yellow; text-shadow: black">NOT FOUND</span>]
+              [ <span sec:authentication="principal.authorities" style="color: black; text-shadow: black">NOT FOUND</span>]
             </div>
             <div class="h-100 d-flex align-items-center mr-3" sec:authorize="!isAuthenticated()">
                 <div class="dropdown" >

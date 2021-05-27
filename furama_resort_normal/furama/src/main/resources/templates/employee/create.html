@@ -37,48 +37,48 @@
             <div>
                 <label>salary</label>
                 <div class="form-group green-border-focus">
-                    <input type="text" class="form-control"th:field='${object.salary}'/>
-                <p th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}"></p>
-            </div>
+                    <input type="text" class="form-control" th:field='${object.salary}'/>
+                    <p th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}"></p>
+                </div>
 
-            <div>
-                <label>phone</label>
-                <div class="form-group green-border-focus">
-                    <input type="text" class="form-control" th:field="*{phone}"/>
+                <div>
+                    <label>phone</label>
+                    <div class="form-group green-border-focus">
+                        <input type="text" class="form-control" th:field="*{phone}"/>
+                    </div>
+                    <p th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
                 </div>
-                <p th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
-            </div>
-            <div>
-                <label>email</label>
-                <div class="form-group green-border-focus">
-                    <input type="text" class="form-control" th:field="*{email}"/>
+                <div>
+                    <label>email</label>
+                    <div class="form-group green-border-focus">
+                        <input type="text" class="form-control" th:field="*{email}"/>
+                    </div>
+                    <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
                 </div>
-                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
-            </div>
-            <div>
-                <label>address</label>
-                <div class="form-group green-border-focus">
-                    <input type="text" class="form-control" th:field="*{address}"/>
+                <div>
+                    <label>address</label>
+                    <div class="form-group green-border-focus">
+                        <input type="text" class="form-control" th:field="*{address}"/>
+                    </div>
+                    <p th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></p>
                 </div>
-                <p th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></p>
+                position
+                <select th:field="*{position}">
+                    <option th:each="c : ${positions}" th:value="${c.id}" th:text="${c.name}"></option>
+                </select>
+                <p th:if="${#fields.hasErrors('position')}" th:errors="*{position}"></p>
+                educationDegree
+                <select th:field="*{educationDegree}">
+                    <option th:each="c : ${educationDegrees}" th:value="${c.id}" th:text="${c.name}"></option>
+                </select>
+                <p th:if="${#fields.hasErrors('educationDegree')}" th:errors="*{educationDegree}"></p>
+                divisions
+                <select th:field="*{division}">
+                    <option th:each="c : ${divisions}" th:value="${c.id}" th:text="${c.name}"></option>
+                </select>
+                <p th:if="${#fields.hasErrors('division')}" th:errors="*{division}"></p>
+                <input type="submit" class="save-pro btn btn-secondary" id="kich" value="Save Employee"/>
             </div>
-            position
-            <select th:field="*{position}">
-                <option th:each="c : ${positions}" th:value="${c.id}" th:text="${c.name}"></option>
-            </select>
-            <p th:if="${#fields.hasErrors('position')}" th:errors="*{position}"></p>
-            educationDegree
-            <select th:field="*{educationDegree}">
-                <option th:each="c : ${educationDegrees}" th:value="${c.id}" th:text="${c.name}"></option>
-            </select>
-            <p th:if="${#fields.hasErrors('educationDegree')}" th:errors="*{educationDegree}"></p>
-            divisions
-            <select th:field="*{division}">
-                <option th:each="c : ${divisions}" th:value="${c.id}" th:text="${c.name}"></option>
-            </select>
-            <p th:if="${#fields.hasErrors('division')}" th:errors="*{division}"></p>
-            <input type="submit" class="save-pro btn btn-secondary" id="kich" value="Save Employee"/>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </form>
     </div>
     <div class="col-5"></div>

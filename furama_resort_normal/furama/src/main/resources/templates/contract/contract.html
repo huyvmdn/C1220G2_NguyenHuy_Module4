@@ -8,13 +8,13 @@
 <div class="row" style="margin-right: 15px; height: 700px">
     <div class="col-2 bg-light">
         <hr style="background-color: white">
-        <a style="text-align:center"  th:href="@{/customer/create}"
+        <a style="text-align:center; color: white"  class=" btn btn-primary" th:href="@{/customer/create}"
            th:text="#{create.customer}"></a>
         <hr>
 <!--        <a style="text-align:center"  th:href="@{/contract/create}"-->
 <!--           th:text="#{create.contract}"></a>-->
         <hr>
-        <p style="text-align: center;" class="searchCustomer">Search</p>
+        <p style="text-align: center;" class="searchCustomer btn btn-primary" >Search</p>
         <form th:action="@{/customer/search}" method="get" class="search-toggle form"  >
             tên:  <input type="text" class="form-control" name="customerName" th:value="${customerName}">
             địa chỉ:  <input type="text" class="form-control" name="address" th:value="${address}">
@@ -39,8 +39,11 @@
                 <th> endDate</th>
                 <th> customer</th>
                 <th> employee</th>
+                <th> entityService</th>
                 <th> deposit</th>
                 <th> totalMoney</th>
+                <th>Action</th>
+                <th>Action</th>
                 <th>Action</th>
             </tr>
             </thead>

@@ -12,8 +12,8 @@
         <a style="text-align:center" th:href="@{/employee/create}"
            class=" btn btn-primary" th:text="#{create.employee}"></a>
         <hr>
-        <p style="text-align: center;" class="searchAll">Search</p>
-        <form th:action="@{/employee/search}" method="get" class="search-toggle form">
+        <p style="text-align: center;" class="searchAll btn btn-primary">Search</p>
+        <form th:action="@{/employee/search}" method="get"  class="search-toggle form">
             tên: <input type="text" class="form-control" name="nameEmployee" th:value="${nameEmployee}">
             <select class="form-control" name="position" th:value="${position}">
                 <option value="">-- chọn --</option>

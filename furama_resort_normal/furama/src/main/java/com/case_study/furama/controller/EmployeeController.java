@@ -127,21 +127,16 @@ public class EmployeeController {
             return "/employee/create";
         }
             String role ;
-            String role2;
         HashSet<Role> roles = new HashSet<>();
         if ( "Director".equals(object.getPosition().getName()) || "Manager".equals(object.getPosition().getName()) ) {
-            role= "ROLE_MEMBER";
-            role2="ROLE_ADMIN";
-            roles.add(roleService.findByName(role));
-            roles.add(roleService.findByName(role2));
+            role= "ROLE_ADMIN";
         } else {
             role="ROLE_MEMBER";
-            roles.add(roleService.findByName(role));
         }
+        roles.add(roleService.findByName(role));
         User user = new User();
         user.setEmail(object.getEmail());
         user.setPassword(EncrypPasswordUtils.EncrypPasswordUtils("123456"));
-
         user.setRoles(roles);
         userService.save(user);
         object.setUser(user);
